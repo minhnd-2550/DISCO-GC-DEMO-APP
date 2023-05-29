@@ -62,6 +62,9 @@ dependencies:
   # Toast view
   fluttertoast: ^8.0.7
 
+  # Launch URL
+  url_launcher: ^6.1.11
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
