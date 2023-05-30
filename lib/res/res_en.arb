@@ -26,5 +26,15 @@
   "errorInternetConnection": "Please check the internet connection",
   "@errorInternetConnection": {},
   "retry": "Retry",
-  "@retry": {}
+  "@retry": {},
+  "registerTitle": "Membership registration",
+  "@registerTitle": {},
+  "emailAddress": "Mail address",
+  "@emailAddress": {},
+  "password": "Password",
+  "@password": {},
+  "passwordConfirm": "Password (Confirm)",
+  "@passwordConfirm": {},
+  "passwordCondition": "半角英大小文字・半角数字・半角記号を使用できます。\nパスワードの条件：◆8文字以上◆英大文字と英小文字を含む◆数字を含む",
+  "@passwordCondition": {}
 }
