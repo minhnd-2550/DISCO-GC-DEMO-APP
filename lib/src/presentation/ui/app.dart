@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_clean_architecture/src/presentation/di/app_provider.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/home/home_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/theme/theme.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/step/step_page.dart';
 import 'package:flutter_gen/gen_l10n/res.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'detail/detail_page.dart';
@@ -30,8 +31,9 @@ class Application extends ConsumerWidget {
         return const Locale('en', '');
       },
       routes: {
-        homePageRoutes: (_) => const HomePage(),
-        detailPageRoutes: (_) => const DetailPage(),
+        // homePageRoutes: (_) => const HomePage(),
+        // detailPageRoutes: (_) => const DetailPage(),
+        stepPageRoutes: (_) => const StepPage(),
       },
     );
   }

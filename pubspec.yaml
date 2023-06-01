@@ -115,6 +115,7 @@ flutter:
     - assets/images/
     - assets/images/ic_menu.png
     - assets/images/ic_netflix.png
+    - assets/images/default_avatar.png
 
   fonts:
     - family: Muli

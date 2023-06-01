@@ -6,8 +6,13 @@ part of 'user_api.dart';
 // RetrofitGenerator
 // **************************************************************************
 
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
+
 class _UserApi implements UserApi {
-  _UserApi(this._dio, {this.baseUrl});
+  _UserApi(
+    this._dio, {
+    this.baseUrl,
+  });
 
   final Dio _dio;
 
@@ -20,12 +25,19 @@ class _UserApi implements UserApi {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(userDataModel.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<TokenDataModel>(
-            Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/authenticate',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<TokenDataModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/authenticate',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = TokenDataModel.fromJson(_result.data!);
     return value;
   }
@@ -37,12 +49,19 @@ class _UserApi implements UserApi {
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(userDataModel.toJson());
-    final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<RegisterResponse>(
-            Options(method: 'POST', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/register',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<RegisterResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/register',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     final value = RegisterResponse.fromJson(_result.data!);
     return value;
   }

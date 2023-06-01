@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'genre_data_model.dart';
 
@@ -11,30 +12,11 @@ part of 'genre_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 GenreDataModel _$GenreDataModelFromJson(Map<String, dynamic> json) {
   return _GenreDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$GenreDataModelTearOff {
-  const _$GenreDataModelTearOff();
-
-  _GenreDataModel call({int? id, String? name}) {
-    return _GenreDataModel(
-      id: id,
-      name: name,
-    );
-  }
-
-  GenreDataModel fromJson(Map<String, Object?> json) {
-    return GenreDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $GenreDataModel = _$GenreDataModelTearOff();
 
 /// @nodoc
 mixin _$GenreDataModel {
@@ -51,69 +33,71 @@ mixin _$GenreDataModel {
 abstract class $GenreDataModelCopyWith<$Res> {
   factory $GenreDataModelCopyWith(
           GenreDataModel value, $Res Function(GenreDataModel) then) =
-      _$GenreDataModelCopyWithImpl<$Res>;
+      _$GenreDataModelCopyWithImpl<$Res, GenreDataModel>;
+  @useResult
   $Res call({int? id, String? name});
 }
 
 /// @nodoc
-class _$GenreDataModelCopyWithImpl<$Res>
+class _$GenreDataModelCopyWithImpl<$Res, $Val extends GenreDataModel>
     implements $GenreDataModelCopyWith<$Res> {
   _$GenreDataModelCopyWithImpl(this._value, this._then);
 
-  final GenreDataModel _value;
   // ignore: unused_field
-  final $Res Function(GenreDataModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$GenreDataModelCopyWith<$Res>
+abstract class _$$_GenreDataModelCopyWith<$Res>
     implements $GenreDataModelCopyWith<$Res> {
-  factory _$GenreDataModelCopyWith(
-          _GenreDataModel value, $Res Function(_GenreDataModel) then) =
-      __$GenreDataModelCopyWithImpl<$Res>;
+  factory _$$_GenreDataModelCopyWith(
+          _$_GenreDataModel value, $Res Function(_$_GenreDataModel) then) =
+      __$$_GenreDataModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int? id, String? name});
 }
 
 /// @nodoc
-class __$GenreDataModelCopyWithImpl<$Res>
-    extends _$GenreDataModelCopyWithImpl<$Res>
-    implements _$GenreDataModelCopyWith<$Res> {
-  __$GenreDataModelCopyWithImpl(
-      _GenreDataModel _value, $Res Function(_GenreDataModel) _then)
-      : super(_value, (v) => _then(v as _GenreDataModel));
+class __$$_GenreDataModelCopyWithImpl<$Res>
+    extends _$GenreDataModelCopyWithImpl<$Res, _$_GenreDataModel>
+    implements _$$_GenreDataModelCopyWith<$Res> {
+  __$$_GenreDataModelCopyWithImpl(
+      _$_GenreDataModel _value, $Res Function(_$_GenreDataModel) _then)
+      : super(_value, _then);
 
-  @override
-  _GenreDataModel get _value => super._value as _GenreDataModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_GenreDataModel(
-      id: id == freezed
+    return _then(_$_GenreDataModel(
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -143,30 +127,32 @@ class _$_GenreDataModel implements _GenreDataModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _GenreDataModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name));
+            other is _$_GenreDataModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
-  _$GenreDataModelCopyWith<_GenreDataModel> get copyWith =>
-      __$GenreDataModelCopyWithImpl<_GenreDataModel>(this, _$identity);
+  int get hashCode => Object.hash(runtimeType, id, name);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GenreDataModelCopyWith<_$_GenreDataModel> get copyWith =>
+      __$$_GenreDataModelCopyWithImpl<_$_GenreDataModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GenreDataModelToJson(this);
+    return _$$_GenreDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _GenreDataModel implements GenreDataModel {
-  const factory _GenreDataModel({int? id, String? name}) = _$_GenreDataModel;
+  const factory _GenreDataModel({final int? id, final String? name}) =
+      _$_GenreDataModel;
 
   factory _GenreDataModel.fromJson(Map<String, dynamic> json) =
       _$_GenreDataModel.fromJson;
@@ -177,6 +163,6 @@ abstract class _GenreDataModel implements GenreDataModel {
   String? get name;
   @override
   @JsonKey(ignore: true)
-  _$GenreDataModelCopyWith<_GenreDataModel> get copyWith =>
+  _$$_GenreDataModelCopyWith<_$_GenreDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
