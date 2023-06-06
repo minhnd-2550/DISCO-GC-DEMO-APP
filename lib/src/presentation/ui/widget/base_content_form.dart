@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
 
 class BaseContentForm extends StatelessWidget {
   const BaseContentForm({
@@ -51,7 +50,7 @@ class BaseContentForm extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
-                                Icons.person,
+                                title == "学歴" ? Icons.school : Icons.person,
                                 color: Colors.white,
                                 size: 16.0,
                               ),
@@ -81,7 +80,6 @@ class BaseContentForm extends StatelessWidget {
                   ],
                 ),
                 child,
-                const Footer(),
               ],
             ),
           ),
