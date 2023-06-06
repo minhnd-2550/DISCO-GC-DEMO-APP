@@ -55,6 +55,7 @@ class LoginPage extends StatelessWidget {
           Expanded(
             child: BaseContentForm(
               title: 'GlobalCareer.comにログイン',
+              fromStepForm: false,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -143,7 +144,6 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              fromStepForm: false,
             ),
           ),
           const Footer(),
