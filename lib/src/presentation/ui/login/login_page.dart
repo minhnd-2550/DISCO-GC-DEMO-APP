@@ -60,16 +60,16 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                     const TextFieldInput(
-                        label: 'メールアドレス',
+                      label: 'メールアドレス',
                       isRequired: true,
                       prefixIcon: Icon(Icons.email),
                     ),
                     const SizedBox(height: 24.0),
                     const TextFieldInput(
-                        label: 'パスワード',
-                        isRequired: true,
-                        isVisible: false,
-                        prefixIcon: Icon(Icons.lock),
+                      label: 'パスワード',
+                      isRequired: true,
+                      isVisible: false,
+                      prefixIcon: Icon(Icons.lock),
                     ),
                     const SizedBox(height: 32),
                     Row(
@@ -117,12 +117,13 @@ class LoginPage extends StatelessWidget {
                           fontSize: 16.0,
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
-
                         ),
                         children: [
-                          const TextSpan(text: '連続10回ログインに失敗すると、アカウントがロックされてログインできなくなります。\nログインの解除は'),
+                          const TextSpan(
+                              text:
+                                  '連続10回ログインに失敗すると、アカウントがロックされてログインできなくなります。\nログインの解除は'),
                           TextSpan(
-                              text: 'お問い合わせ',
+                            text: 'お問い合わせ',
                             style: const TextStyle(
                               color: Colors.blue,
                             ),
@@ -135,8 +136,7 @@ class LoginPage extends StatelessWidget {
                               text: 'よりGlobalCareer.com事務局までご連絡ください。\n\n'
                                   'なお、アカウントロック解除には時間がかかる場合があります。\n'
                                   'パスワードがわからない場合は、アカウントがロックされる前に、\n'
-                                  '「パスワードを忘れた方はこちら」よりパスワードの再設定を行ってください。'
-                          ),
+                                  '「パスワードを忘れた方はこちら」よりパスワードの再設定を行ってください。'),
                         ],
                       ),
                     ),
