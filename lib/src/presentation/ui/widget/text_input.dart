@@ -17,16 +17,15 @@ class TextFieldInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
           children: [
             Text(
               label,
               style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w700,
+                color: Colors.black,
+                fontSize: 16.0,
+                fontWeight: FontWeight.w700,
               ),
             ),
             const SizedBox(width: 4.0),
@@ -36,31 +35,30 @@ class TextFieldInput extends StatelessWidget {
                   color: Colors.redAccent,
                   borderRadius: BorderRadius.circular(4.0),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
-                child: const Text(
-                  '必須',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10.0,
-                    fontWeight: FontWeight.w600,
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+                  child: Text(
+                    '必須',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10.0,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
           ],
         ),
-        const SizedBox(height: 8.0),
+        const SizedBox(height: 8.0,),
         TextFormField(
           decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
             border: const OutlineInputBorder(),
             prefixIcon: prefixIcon,
-            suffixIcon: isVisible != null
-                ? IconButton(
-                  onPressed: () {},
-                  icon: Icon(isVisible == true ? Icons.visibility : Icons.visibility_off),
+            suffixIcon: IconButton(
+              onPressed: () {  },
+              icon: Icon(isVisible != null ? isVisible == true ? Icons.visibility : Icons.visibility_off : null),
             )
-                : null,
           ),
           obscureText: isVisible == true,
         ),

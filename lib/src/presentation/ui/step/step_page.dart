@@ -174,7 +174,6 @@ class StepPage extends StatelessWidget {
                           const SizedBox(height: 30),
                           const GenderSelection(label: "敬称", listTitle: ['Mr.', 'Ms.', 'その他']),
                           const SizedBox(height: 30),
-                          // StepTextFieldInput(stepFieldModel: listField.first),
                           Column(
                             children: List.generate(
                               listInfoField.length,
