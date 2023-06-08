@@ -90,7 +90,7 @@ dev_dependencies:
   # Lint when build
   flutter_lints: ^2.0.1
 
-  intl: ^0.17.0
+  intl: ^0.18.0
 
 # Config generate when build
 flutter_gen:
@@ -120,6 +120,7 @@ flutter:
     - assets/images/
     - assets/images/ic_menu.png
     - assets/images/ic_netflix.png
+    - assets/images/default_avatar.png
 
   fonts:
     - family: Muli

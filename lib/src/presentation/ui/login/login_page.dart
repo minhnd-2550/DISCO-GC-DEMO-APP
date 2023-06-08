@@ -143,6 +143,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
+              fromStepForm: false,
             ),
           ),
           const Footer(),

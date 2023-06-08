@@ -1,6 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: type=lint
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'company_data_model.dart';
 
@@ -11,36 +12,11 @@ part of 'company_data_model.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CompanyDataModel _$CompanyDataModelFromJson(Map<String, dynamic> json) {
   return _CompanyDataModel.fromJson(json);
 }
-
-/// @nodoc
-class _$CompanyDataModelTearOff {
-  const _$CompanyDataModelTearOff();
-
-  _CompanyDataModel call(
-      {int? id,
-      @JsonKey(name: 'logo_path') String? logoPath,
-      String? name,
-      @JsonKey(name: 'original_country') String? originalCountry}) {
-    return _CompanyDataModel(
-      id: id,
-      logoPath: logoPath,
-      name: name,
-      originalCountry: originalCountry,
-    );
-  }
-
-  CompanyDataModel fromJson(Map<String, Object?> json) {
-    return CompanyDataModel.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CompanyDataModel = _$CompanyDataModelTearOff();
 
 /// @nodoc
 mixin _$CompanyDataModel {
@@ -61,7 +37,8 @@ mixin _$CompanyDataModel {
 abstract class $CompanyDataModelCopyWith<$Res> {
   factory $CompanyDataModelCopyWith(
           CompanyDataModel value, $Res Function(CompanyDataModel) then) =
-      _$CompanyDataModelCopyWithImpl<$Res>;
+      _$CompanyDataModelCopyWithImpl<$Res, CompanyDataModel>;
+  @useResult
   $Res call(
       {int? id,
       @JsonKey(name: 'logo_path') String? logoPath,
@@ -70,14 +47,16 @@ abstract class $CompanyDataModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CompanyDataModelCopyWithImpl<$Res>
+class _$CompanyDataModelCopyWithImpl<$Res, $Val extends CompanyDataModel>
     implements $CompanyDataModelCopyWith<$Res> {
   _$CompanyDataModelCopyWithImpl(this._value, this._then);
 
-  final CompanyDataModel _value;
   // ignore: unused_field
-  final $Res Function(CompanyDataModel) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -86,33 +65,34 @@ class _$CompanyDataModelCopyWithImpl<$Res>
     Object? originalCountry = freezed,
   }) {
     return _then(_value.copyWith(
-      id: id == freezed
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      logoPath: logoPath == freezed
+      logoPath: freezed == logoPath
           ? _value.logoPath
           : logoPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      originalCountry: originalCountry == freezed
+      originalCountry: freezed == originalCountry
           ? _value.originalCountry
           : originalCountry // ignore: cast_nullable_to_non_nullable
               as String?,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$CompanyDataModelCopyWith<$Res>
+abstract class _$$_CompanyDataModelCopyWith<$Res>
     implements $CompanyDataModelCopyWith<$Res> {
-  factory _$CompanyDataModelCopyWith(
-          _CompanyDataModel value, $Res Function(_CompanyDataModel) then) =
-      __$CompanyDataModelCopyWithImpl<$Res>;
+  factory _$$_CompanyDataModelCopyWith(
+          _$_CompanyDataModel value, $Res Function(_$_CompanyDataModel) then) =
+      __$$_CompanyDataModelCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int? id,
       @JsonKey(name: 'logo_path') String? logoPath,
@@ -121,16 +101,14 @@ abstract class _$CompanyDataModelCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CompanyDataModelCopyWithImpl<$Res>
-    extends _$CompanyDataModelCopyWithImpl<$Res>
-    implements _$CompanyDataModelCopyWith<$Res> {
-  __$CompanyDataModelCopyWithImpl(
-      _CompanyDataModel _value, $Res Function(_CompanyDataModel) _then)
-      : super(_value, (v) => _then(v as _CompanyDataModel));
+class __$$_CompanyDataModelCopyWithImpl<$Res>
+    extends _$CompanyDataModelCopyWithImpl<$Res, _$_CompanyDataModel>
+    implements _$$_CompanyDataModelCopyWith<$Res> {
+  __$$_CompanyDataModelCopyWithImpl(
+      _$_CompanyDataModel _value, $Res Function(_$_CompanyDataModel) _then)
+      : super(_value, _then);
 
-  @override
-  _CompanyDataModel get _value => super._value as _CompanyDataModel;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? id = freezed,
@@ -138,20 +116,20 @@ class __$CompanyDataModelCopyWithImpl<$Res>
     Object? name = freezed,
     Object? originalCountry = freezed,
   }) {
-    return _then(_CompanyDataModel(
-      id: id == freezed
+    return _then(_$_CompanyDataModel(
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as int?,
-      logoPath: logoPath == freezed
+      logoPath: freezed == logoPath
           ? _value.logoPath
           : logoPath // ignore: cast_nullable_to_non_nullable
               as String?,
-      name: name == freezed
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      originalCountry: originalCountry == freezed
+      originalCountry: freezed == originalCountry
           ? _value.originalCountry
           : originalCountry // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -191,39 +169,40 @@ class _$_CompanyDataModel implements _CompanyDataModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CompanyDataModel &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.logoPath, logoPath) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality()
-                .equals(other.originalCountry, originalCountry));
+            other is _$_CompanyDataModel &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.logoPath, logoPath) ||
+                other.logoPath == logoPath) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.originalCountry, originalCountry) ||
+                other.originalCountry == originalCountry));
   }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(logoPath),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(originalCountry));
 
   @JsonKey(ignore: true)
   @override
-  _$CompanyDataModelCopyWith<_CompanyDataModel> get copyWith =>
-      __$CompanyDataModelCopyWithImpl<_CompanyDataModel>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, id, logoPath, name, originalCountry);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CompanyDataModelCopyWith<_$_CompanyDataModel> get copyWith =>
+      __$$_CompanyDataModelCopyWithImpl<_$_CompanyDataModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CompanyDataModelToJson(this);
+    return _$$_CompanyDataModelToJson(
+      this,
+    );
   }
 }
 
 abstract class _CompanyDataModel implements CompanyDataModel {
   const factory _CompanyDataModel(
-          {int? id,
-          @JsonKey(name: 'logo_path') String? logoPath,
-          String? name,
-          @JsonKey(name: 'original_country') String? originalCountry}) =
+          {final int? id,
+          @JsonKey(name: 'logo_path') final String? logoPath,
+          final String? name,
+          @JsonKey(name: 'original_country') final String? originalCountry}) =
       _$_CompanyDataModel;
 
   factory _CompanyDataModel.fromJson(Map<String, dynamic> json) =
@@ -241,6 +220,6 @@ abstract class _CompanyDataModel implements CompanyDataModel {
   String? get originalCountry;
   @override
   @JsonKey(ignore: true)
-  _$CompanyDataModelCopyWith<_CompanyDataModel> get copyWith =>
+  _$$_CompanyDataModelCopyWith<_$_CompanyDataModel> get copyWith =>
       throw _privateConstructorUsedError;
 }

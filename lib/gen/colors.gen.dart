@@ -67,6 +67,9 @@ class ColorName {
   /// Color: #FFFFFF
   static const Color primaryColorDark = Color(0xFFFFFFFF);
 
+  /// Color: #5DBCA2
+  static const Color primaryStepColor = Color(0xFF5DBCA2);
+
   /// Color: #26bfa1
   static const Color primaryUserColor = Color(0xFF26BFA1);
 

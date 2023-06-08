@@ -5,9 +5,11 @@ class BaseContentForm extends StatelessWidget {
     Key? key,
     required this.title,
     required this.child,
+    required this.fromStepForm
   }) : super(key: key);
   final Widget child;
   final String title;
+  final bool fromStepForm;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,27 @@ class BaseContentForm extends StatelessWidget {
                             ],
                           ),
                         ),
-                        child: Center(
+                        child: fromStepForm ? Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                title == "学歴" ? Icons.school : Icons.person,
+                                color: Colors.white,
+                                size: 16.0,
+                              ),
+                              const SizedBox(width: 8.0),
+                              Text(
+                                title,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ) : Center(
                           child: Text(
                             title,
                             style: const TextStyle(
