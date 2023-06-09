@@ -32,53 +32,54 @@ class BaseContentForm extends StatelessWidget {
             ),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 16.0),
-                        decoration: const BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              Color(0xFF874da2),
-                              Color(0xFF884d80),
-                            ],
+                if (title != "")
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          decoration: const BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [
+                                Color(0xFF874da2),
+                                Color(0xFF884d80),
+                              ],
+                            ),
                           ),
-                        ),
-                        child: fromStepForm ? Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                title == "学歴" ? Icons.school : Icons.person,
-                                color: Colors.white,
-                                size: 16.0,
-                              ),
-                              const SizedBox(width: 8.0),
-                              Text(
-                                title,
-                                style: const TextStyle(
+                          child: fromStepForm ? Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  title == "学歴" ? Icons.school : Icons.person,
                                   color: Colors.white,
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w700,
+                                  size: 16.0,
                                 ),
+                                const SizedBox(width: 8.0),
+                                Text(
+                                  title,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ) : Center(
+                            child: Text(
+                              title,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.w700,
                               ),
-                            ],
-                          ),
-                        ) : Center(
-                          child: Text(
-                            title,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 14.0,
-                              fontWeight: FontWeight.w700,
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
                 child,
               ],
             ),
