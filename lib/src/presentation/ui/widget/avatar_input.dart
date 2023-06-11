@@ -12,7 +12,7 @@ class AvatarInput extends StatelessWidget {
       children: [
         Row(
           children: [
-            Text(
+            const Text(
               "プロフィール画像",
               style: TextStyle(
                 color: Colors.black,
@@ -20,7 +20,7 @@ class AvatarInput extends StatelessWidget {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            CircleAvatar(
+            const CircleAvatar(
               radius: 8,
               backgroundColor: Colors.blueAccent,
               child: Icon(
@@ -35,7 +35,8 @@ class AvatarInput extends StatelessWidget {
                 color: ColorName.primaryStepColor,
                 borderRadius: BorderRadius.circular(4.0),
               ),
-              padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
               child: const Text(
                 '任套',
                 textAlign: TextAlign.center,
@@ -57,7 +58,7 @@ class AvatarInput extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(12.0),
           color: Colors.white,
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -71,7 +72,7 @@ class AvatarInput extends StatelessWidget {
                     width: 1.0,
                   ),
                 ),
-                child: Padding(
+                child: const Padding(
                   padding: EdgeInsets.all(5),
                   child: Center(
                     child: Text(
@@ -85,8 +86,8 @@ class AvatarInput extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 8.0),
-              Expanded(
+              const SizedBox(width: 8.0),
+              const Expanded(
                 child: Text(
                   '選択されていません',
                   style: TextStyle(
@@ -99,8 +100,8 @@ class AvatarInput extends StatelessWidget {
             ],
           ),
         ),
-        Padding(
-            padding: EdgeInsets.only(left: 12),
+        const Padding(
+          padding: EdgeInsets.only(left: 12),
           child: Text(
             "アップロード容量：5MB以下",
             style: TextStyle(

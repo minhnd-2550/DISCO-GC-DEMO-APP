@@ -32,7 +32,8 @@ class GenderSelection extends StatelessWidget {
                 color: Colors.redAccent,
                 borderRadius: BorderRadius.circular(4.0),
               ),
-              padding: const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 2.0, horizontal: 4.0),
               child: const Text(
                 '必須',
                 textAlign: TextAlign.center,
@@ -50,20 +51,17 @@ class GenderSelection extends StatelessWidget {
           children: [
             CustomButton(
               text: listTitle[0],
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
             const SizedBox(width: 10),
             CustomButton(
               text: listTitle[1],
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
             const SizedBox(width: 10),
             CustomButton(
               text: listTitle[2],
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ],
         )
@@ -83,7 +81,7 @@ class CustomButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CustomButtonState createState() => _CustomButtonState();
+  State<CustomButton> createState() => _CustomButtonState();
 }
 
 class _CustomButtonState extends State<CustomButton> {

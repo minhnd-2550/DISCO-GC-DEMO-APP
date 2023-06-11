@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_clean_architecture/src/presentation/di/app_provider.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/registration_page.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/theme/theme.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/step/step_page.dart';
 import 'package:flutter_gen/gen_l10n/res.dart';
@@ -39,6 +40,7 @@ class Application extends ConsumerWidget {
         detailPageRoutes: (_) => const DetailPage(),
         loginPageRoutes: (_) => const LoginPage(),
         registrationPageRoutes: (_) => const RegistrationPage(),
+        confirmationPageRoutes: (_) => const Confirmation(),
       },
     );
   }
