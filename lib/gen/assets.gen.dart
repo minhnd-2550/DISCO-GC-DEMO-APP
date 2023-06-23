@@ -28,8 +28,13 @@ class $AssetsImagesGen {
   /// File path: assets/images/logo.svg
   SvgGenImage get logo => const SvgGenImage('assets/images/logo.svg');
 
+  /// File path: assets/images/mountaint.png
+  AssetGenImage get mountaint =>
+      const AssetGenImage('assets/images/mountaint.png');
+
   /// List of all assets
-  List<dynamic> get values => [icMenu, icNetflix, logo];
+  List<dynamic> get values =>
+      [defaultAvatar, icMenu, icNetflix, logo, mountaint];
 }
 
 class Assets {
