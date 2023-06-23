@@ -14,7 +14,10 @@ class TopPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
     final double iconWidth = screenWidth / 7;
     final List<TopNotification> listIconNoti = [
       TopNotification(icon: Icon(
@@ -82,7 +85,8 @@ class TopPage extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {},
-                    child: const Icon(Icons.keyboard_arrow_down, color: Colors.white),
+                    child: const Icon(
+                        Icons.keyboard_arrow_down, color: Colors.white),
                   ),
                 ],
               ),
@@ -114,7 +118,10 @@ class TopPage extends StatelessWidget {
                     width: iconWidth,
                     height: 50,
                     // child: NotificationIcon(width: screenWidth, height: 100),
-                    child: NotificationIcon(width: screenWidth, height: 100, icon: listIconNoti[i].icon, notiCount: listIconNoti[i].notiNumber),
+                    child: NotificationIcon(width: screenWidth,
+                        height: 100,
+                        icon: listIconNoti[i].icon,
+                        notiCount: listIconNoti[i].notiNumber),
                   ),
               ],
             ),
@@ -145,6 +152,266 @@ class TopPage extends StatelessWidget {
                             fontWeight: FontWeight.normal,
                           ),
                           textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 10),
+                        Center(
+                          child: Table(
+                            border: TableBorder.all(),
+                            children: [
+                              TableRow(
+                                children: [
+                                  TableCell(
+                                    verticalAlignment: TableCellVerticalAlignment
+                                        .fill,
+                                    child: Container(
+                                      color: Colors.grey[350],
+                                      child: Center(
+                                          child: Text(
+                                            '開催日時・場所',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  TableCell(
+                                    verticalAlignment: TableCellVerticalAlignment
+                                        .middle,
+                                    child: Container(
+                                      color: Colors.grey[350],
+                                      child: Center(
+                                          child: Text(
+                                            '開催企業 / イベントタイトル',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                          )
+                                      ),
+                                    ),
+                                  ),
+                                  TableCell(
+                                    verticalAlignment: TableCellVerticalAlignment
+                                        .fill,
+                                    child: Container(
+                                      color: Colors.grey[350],
+                                      child: Center(
+                                        child: Text(
+                                          '参加',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              TableRow(
+                                children: [
+                                  TableCell(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 4.0, top: 8.0, bottom: 8.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment
+                                            .start,
+                                        children: [
+                                          Container(
+                                            width: 102,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Colors.grey,
+                                                width: 2.0,
+                                              ),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.computer,
+                                                  color: Colors.grey,),
+                                                Text(
+                                                  'オンライン',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight
+                                                        .normal,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Text(
+                                            '2023年',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          Text(
+                                            '05月17日  17:19',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          Text(
+                                            '(JST) ~  (96 時間)',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              color: Colors.black,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  TableCell(
+                                      verticalAlignment: TableCellVerticalAlignment
+                                          .fill,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 3.0,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'GlobalCareer.com事務局 / Premium session Toan',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.black,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  TableCell(
+                                    verticalAlignment: TableCellVerticalAlignment
+                                        .fill,
+                                    child: Center(child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.lightBlue[200],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                      ),
+                                      child: Text("地加する>"),
+                                    ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              TableRow(
+                                children: [
+                                  TableCell(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 4.0, top: 8.0, bottom: 8.0),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment
+                                            .start,
+                                        children: [
+                                          Container(
+                                            width: 102,
+                                            decoration: BoxDecoration(
+                                              border: Border.all(
+                                                color: Colors.grey,
+                                                width: 2.0,
+                                              ),
+                                            ),
+                                            alignment: Alignment.center,
+                                            child: Row(
+                                              children: [
+                                                Icon(Icons.computer,
+                                                  color: Colors.grey,),
+                                                Text(
+                                                  'オンライン',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight
+                                                        .normal,
+                                                    color: Colors.grey,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Text(
+                                            '2023年',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              color: Colors.black,
+                                            ),
+                                          ),
+                                          Text(
+                                            '05月26日  00:00',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                              fontSize: 15,
+                                            ),
+                                          ),
+                                          Text(
+                                            '(JST) ~  (96 時間)',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.normal,
+                                              color: Colors.black,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                  TableCell(
+                                    verticalAlignment: TableCellVerticalAlignment
+                                        .fill,
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                        left: 3.0,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'GlobalCareer.com事務局 / Khanh seminar 9.5.1',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            color: Colors.black,
+                                          ),
+                                          textAlign: TextAlign.left,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  TableCell(
+                                    verticalAlignment: TableCellVerticalAlignment
+                                        .fill,
+                                    child: Center(child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.grey[350],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(4),
+                                        ),
+                                      ),
+                                      child: Text(
+                                          "地加する>",
+                                          style: TextStyle(
+                                            color: Colors.grey,
+                                          ),
+                                      ),
+                                    ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
