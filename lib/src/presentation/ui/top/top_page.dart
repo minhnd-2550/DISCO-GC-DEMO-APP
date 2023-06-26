@@ -7,51 +7,62 @@ import 'package:flutter_clean_architecture/src/presentation/model/top_notificati
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_content_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
 
-const topPageRouter = '/';
+const topPageRouter = '/top';
 
 class TopPage extends StatelessWidget {
   const TopPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
+    final double screenWidth = MediaQuery.of(context).size.width;
     final double iconWidth = screenWidth / 7;
     final List<TopNotification> listIconNoti = [
-      TopNotification(icon: Icon(
-        Icons.menu,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 0),
-      TopNotification(icon: Icon(
-        Icons.send,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 0),
-      TopNotification(icon: Icon(
-        Icons.bookmarks,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 4),
-      TopNotification(icon: Icon(
-        Icons.volume_up_rounded,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 0),
-      TopNotification(icon: Icon(
-        Icons.heart_broken,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 1),
-      TopNotification(icon: Icon(
-        Icons.person,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 0),
-      TopNotification(icon: Icon(
-        Icons.book,
-        color: ColorName.primaryStepColor,
-      ), notiNumber: 0),
+      TopNotification(
+          icon: const Icon(
+            Icons.menu,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 0),
+      TopNotification(
+          icon: const Icon(
+            Icons.send,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 0),
+      TopNotification(
+          icon: const Icon(
+            Icons.bookmarks,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 4),
+      TopNotification(
+          icon: const Icon(
+            Icons.volume_up_rounded,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 0),
+      TopNotification(
+          icon: const Icon(
+            Icons.heart_broken,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 1),
+      TopNotification(
+          icon: const Icon(
+            Icons.person,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 0),
+      TopNotification(
+          icon: const Icon(
+            Icons.book,
+            color: ColorName.primaryStepColor,
+          ),
+          notiNumber: 0),
     ];
 
     return Scaffold(
-      backgroundColor: Color(0xFFF5F5F5),
+      backgroundColor: const Color(0xFFF5F5F5),
       appBar: AppBar(
         backgroundColor: ColorName.primaryStepColor,
         systemOverlayStyle: const SystemUiOverlayStyle(
@@ -63,9 +74,9 @@ class TopPage extends StatelessWidget {
         titleSpacing: 0,
         title: Row(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
-              child: const Text(
+            const Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Text(
                 'GlobalCareer.com',
                 style: TextStyle(
                   fontSize: 25,
@@ -85,8 +96,8 @@ class TopPage extends StatelessWidget {
                   ),
                   InkWell(
                     onTap: () {},
-                    child: const Icon(
-                        Icons.keyboard_arrow_down, color: Colors.white),
+                    child: const Icon(Icons.keyboard_arrow_down,
+                        color: Colors.white),
                   ),
                 ],
               ),
@@ -99,13 +110,13 @@ class TopPage extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Color(0xFFF5F5F5),
+              color: const Color(0xFFF5F5F5),
               boxShadow: [
                 BoxShadow(
                   color: Colors.grey.withOpacity(0.5),
                   spreadRadius: 2,
                   blurRadius: 5,
-                  offset: Offset(0, 3),
+                  offset: const Offset(0, 3),
                 ),
               ],
             ),
@@ -114,11 +125,12 @@ class TopPage extends StatelessWidget {
             child: Row(
               children: [
                 for (int i = 0; i < 7; i++)
-                  Container(
+                  SizedBox(
                     width: iconWidth,
                     height: 50,
                     // child: NotificationIcon(width: screenWidth, height: 100),
-                    child: NotificationIcon(width: screenWidth,
+                    child: NotificationIcon(
+                        width: screenWidth,
                         height: 100,
                         icon: listIconNoti[i].icon,
                         notiCount: listIconNoti[i].notiNumber),
@@ -132,6 +144,7 @@ class TopPage extends StatelessWidget {
               children: [
                 BaseContentForm(
                   title: '',
+                  fromStepForm: false,
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Column(
@@ -144,7 +157,7 @@ class TopPage extends StatelessWidget {
                             fontWeight: FontWeight.normal,
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         const Text(
                           "イベントの開催日時が近づいても「税閉URLの設定待ちです」のままの場合は、メッセージより企業に問い合わせをお願いします。",
                           style: TextStyle(
@@ -153,7 +166,7 @@ class TopPage extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         Center(
                           child: Table(
                             border: TableBorder.all(),
@@ -161,45 +174,43 @@ class TopPage extends StatelessWidget {
                               TableRow(
                                 children: [
                                   TableCell(
-                                    verticalAlignment: TableCellVerticalAlignment
-                                        .fill,
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.fill,
                                     child: Container(
                                       color: Colors.grey[350],
-                                      child: Center(
+                                      child: const Center(
                                           child: Text(
-                                            '開催日時・場所',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          )
-                                      ),
+                                        '開催日時・場所',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )),
                                     ),
                                   ),
                                   TableCell(
-                                    verticalAlignment: TableCellVerticalAlignment
-                                        .middle,
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.middle,
                                     child: Container(
                                       color: Colors.grey[350],
-                                      child: Center(
+                                      child: const Center(
                                           child: Text(
-                                            '開催企業 / イベントタイトル',
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                          )
-                                      ),
+                                        '開催企業 / イベントタイトル',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.black,
+                                        ),
+                                        textAlign: TextAlign.center,
+                                      )),
                                     ),
                                   ),
                                   TableCell(
-                                    verticalAlignment: TableCellVerticalAlignment
-                                        .fill,
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.fill,
                                     child: Container(
                                       color: Colors.grey[350],
-                                      child: Center(
+                                      child: const Center(
                                         child: Text(
                                           '参加',
                                           style: TextStyle(
@@ -217,11 +228,11 @@ class TopPage extends StatelessWidget {
                                 children: [
                                   TableCell(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 4.0, top: 8.0, bottom: 8.0),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment
-                                            .start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             width: 102,
@@ -233,28 +244,30 @@ class TopPage extends StatelessWidget {
                                             ),
                                             alignment: Alignment.center,
                                             child: Row(
-                                              children: [
-                                                Icon(Icons.computer,
-                                                  color: Colors.grey,),
+                                              children: const [
+                                                Icon(
+                                                  Icons.computer,
+                                                  color: Colors.grey,
+                                                ),
                                                 Text(
                                                   'オンライン',
                                                   style: TextStyle(
-                                                    fontWeight: FontWeight
-                                                        .normal,
+                                                    fontWeight:
+                                                        FontWeight.normal,
                                                     color: Colors.grey,
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             '2023年',
                                             style: TextStyle(
                                               fontWeight: FontWeight.normal,
                                               color: Colors.black,
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             '05月17日  17:19',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -262,7 +275,7 @@ class TopPage extends StatelessWidget {
                                               fontSize: 15,
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             '(JST) ~  (96 時間)',
                                             style: TextStyle(
                                               fontWeight: FontWeight.normal,
@@ -273,9 +286,9 @@ class TopPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  TableCell(
-                                      verticalAlignment: TableCellVerticalAlignment
-                                          .fill,
+                                  const TableCell(
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.fill,
                                     child: Padding(
                                       padding: EdgeInsets.only(
                                         left: 3.0,
@@ -293,18 +306,21 @@ class TopPage extends StatelessWidget {
                                     ),
                                   ),
                                   TableCell(
-                                    verticalAlignment: TableCellVerticalAlignment
-                                        .fill,
-                                    child: Center(child: ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.lightBlue[200],
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.fill,
+                                    child: Center(
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Colors.lightBlue[200],
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
                                         ),
+                                        child: const Text("地加する>"),
                                       ),
-                                      child: Text("地加する>"),
-                                    ),
                                     ),
                                   ),
                                 ],
@@ -313,11 +329,11 @@ class TopPage extends StatelessWidget {
                                 children: [
                                   TableCell(
                                     child: Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 4.0, top: 8.0, bottom: 8.0),
                                       child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment
-                                            .start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
                                         children: [
                                           Container(
                                             width: 102,
@@ -329,28 +345,30 @@ class TopPage extends StatelessWidget {
                                             ),
                                             alignment: Alignment.center,
                                             child: Row(
-                                              children: [
-                                                Icon(Icons.computer,
-                                                  color: Colors.grey,),
+                                              children: const [
+                                                Icon(
+                                                  Icons.computer,
+                                                  color: Colors.grey,
+                                                ),
                                                 Text(
                                                   'オンライン',
                                                   style: TextStyle(
-                                                    fontWeight: FontWeight
-                                                        .normal,
+                                                    fontWeight:
+                                                        FontWeight.normal,
                                                     color: Colors.grey,
                                                   ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             '2023年',
                                             style: TextStyle(
                                               fontWeight: FontWeight.normal,
                                               color: Colors.black,
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             '05月26日  00:00',
                                             style: TextStyle(
                                               fontWeight: FontWeight.bold,
@@ -358,7 +376,7 @@ class TopPage extends StatelessWidget {
                                               fontSize: 15,
                                             ),
                                           ),
-                                          Text(
+                                          const Text(
                                             '(JST) ~  (96 時間)',
                                             style: TextStyle(
                                               fontWeight: FontWeight.normal,
@@ -369,9 +387,9 @@ class TopPage extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  TableCell(
-                                    verticalAlignment: TableCellVerticalAlignment
-                                        .fill,
+                                  const TableCell(
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.fill,
                                     child: Padding(
                                       padding: EdgeInsets.only(
                                         left: 3.0,
@@ -389,23 +407,25 @@ class TopPage extends StatelessWidget {
                                     ),
                                   ),
                                   TableCell(
-                                    verticalAlignment: TableCellVerticalAlignment
-                                        .fill,
-                                    child: Center(child: ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        primary: Colors.grey[350],
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
+                                    verticalAlignment:
+                                        TableCellVerticalAlignment.fill,
+                                    child: Center(
+                                      child: ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: Colors.grey[350],
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
                                         ),
-                                      ),
-                                      child: Text(
+                                        child: const Text(
                                           "地加する>",
                                           style: TextStyle(
                                             color: Colors.grey,
                                           ),
+                                        ),
                                       ),
-                                    ),
                                     ),
                                   ),
                                 ],
@@ -416,10 +436,10 @@ class TopPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  fromStepForm: false,
                 ),
                 BaseContentForm(
                   title: '',
+                  fromStepForm: false,
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Column(
@@ -433,9 +453,9 @@ class TopPage extends StatelessWidget {
                           ),
                           textAlign: TextAlign.center,
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Center(
-                          child: Container(
+                          child: SizedBox(
                             width: 100,
                             height: 70,
                             child: Assets.images.mountaint.image(
@@ -445,7 +465,7 @@ class TopPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         const Text(
                           "Huyen offical edit",
                           style: TextStyle(
@@ -454,11 +474,10 @@ class TopPage extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                       ],
                     ),
                   ),
-                  fromStepForm: false,
                 ),
               ],
             ),

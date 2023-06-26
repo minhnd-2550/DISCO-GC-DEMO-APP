@@ -8,6 +8,9 @@ class ButtonWithIcon extends StatelessWidget {
   final int? color;
   final double? textFontSize;
   final FontWeight? textFontWeight;
+  final IconData? rightIcons;
+  final double? height;
+  final double? iconSize;
 
   const ButtonWithIcon({
     Key? key,
@@ -17,11 +20,15 @@ class ButtonWithIcon extends StatelessWidget {
     this.color,
     this.textFontSize,
     this.textFontWeight,
+    this.rightIcons,
+    this.height,
+    this.iconSize,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: height,
       width: double.infinity,
       child: ElevatedButton(
         onPressed: () => {},
@@ -38,7 +45,7 @@ class ButtonWithIcon extends StatelessWidget {
             if (icons != null) ...[
               Icon(
                 icons,
-                size: 24.0,
+                size: iconSize ?? 24.0,
               ),
               const SizedBox(
                 width: 5,
@@ -51,7 +58,16 @@ class ButtonWithIcon extends StatelessWidget {
                 fontSize: textFontSize ?? 16.0,
                 fontWeight: textFontWeight ?? FontWeight.w400,
               ),
-            )
+            ),
+            if (rightIcons != null) ...[
+              const SizedBox(
+                width: 5,
+              ),
+              Icon(
+                rightIcons,
+                size: iconSize ?? 24.0,
+              ),
+            ],
           ],
         ),
       ),
