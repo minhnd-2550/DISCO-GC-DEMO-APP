@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_clean_architecture/gen/colors.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/component/registration_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/component/registration_info.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
@@ -23,7 +24,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       backgroundColor: ColorName.backgroundColor,
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF26BFA1),
+                Color(0xFF1AA1A3),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         systemOverlayStyle: const SystemUiOverlayStyle(
           // Status bar color
           statusBarColor: Colors.white,
@@ -50,7 +62,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
             icon: const Icon(Icons.info, color: Colors.white),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              _goToLogin(context);
+            },
             icon: const Icon(
               Icons.login_outlined,
               color: Colors.white,
@@ -153,5 +167,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
         ),
       );
     });
+  }
+
+  void _goToLogin(BuildContext context) async {
+    await Navigator.pushNamed(context, loginPageRoutes);
   }
 }

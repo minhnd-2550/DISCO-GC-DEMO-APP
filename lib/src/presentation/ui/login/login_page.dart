@@ -1,7 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_content_form.dart';
+import 'package:flutter_clean_architecture/gen/colors.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/register/registration_page.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/top/top_page.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/widget/block_info_layout.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/text_input.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,7 +18,18 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.greenAccent,
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(0xFF26BFA1),
+                Color(0xFF1AA1A3),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         systemOverlayStyle: const SystemUiOverlayStyle(
           // Status bar color
           statusBarColor: Colors.white,
@@ -52,10 +66,11 @@ class LoginPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: BaseContentForm(
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(20.0),
+            child: BlockInfoLayout(
               title: 'GlobalCareer.comにログイン',
-              fromStepForm: false,
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
@@ -80,17 +95,20 @@ class LoginPage extends StatelessWidget {
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 16.0),
                             child: ElevatedButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                _login(context);
+                              },
                               style: ElevatedButton.styleFrom(
                                 textStyle: const TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700,
                                   color: Colors.white,
                                 ),
+                                backgroundColor: ColorName.primaryUserColor,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(40.0),
                                 ),
-                                backgroundColor: Colors.green,
+                                elevation: 8.0,
                               ),
                               child: const Padding(
                                 padding: EdgeInsets.all(8.0),
@@ -103,19 +121,32 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     const Text(
-                      'このURLは有効期限が切れています。お手数ですが、\n再度新規会員登録をお願いいたします。',
+                      'パスワードを忘れた方はこちら',
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color(0xff3a50c9),
                         fontWeight: FontWeight.w500,
-                        fontSize: 16.0,
+                        fontSize: 14.0,
                       ),
                       textAlign: TextAlign.center,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        _goToRegister(context);
+                      },
+                      child: const Text(
+                        'まだ会員でない方はこちら（会員登録）',
+                        style: TextStyle(
+                          color: Color(0xff3a50c9),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 14.0,
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     RichText(
                       text: TextSpan(
                         style: const TextStyle(
-                          fontSize: 16.0,
+                          fontSize: 14.0,
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
                         ),
@@ -126,7 +157,7 @@ class LoginPage extends StatelessWidget {
                           TextSpan(
                             text: 'お問い合わせ',
                             style: const TextStyle(
-                              color: Colors.blue,
+                              color: Color(0xff3a50c9),
                             ),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
@@ -150,5 +181,13 @@ class LoginPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _login(BuildContext context) async {
+    await Navigator.pushNamed(context, topPageRoutes);
+  }
+
+  void _goToRegister(BuildContext context) async {
+    await Navigator.pushNamed(context, registrationPageRoutes);
   }
 }

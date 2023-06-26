@@ -18,6 +18,7 @@ class Application extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: defaultTheme,
       localizationsDelegates: Resource.localizationsDelegates,
       supportedLocales: Resource.supportedLocales,
@@ -38,7 +39,7 @@ class Application extends ConsumerWidget {
         return const Locale('en', '');
       },
       routes: {
-        topPageRouter: (_) => const TopPage(),
+        topPageRoutes: (_) => const TopPage(),
         stepPageRoutes: (_) => const StepPage(),
         detailPageRoutes: (_) => const DetailPage(),
         loginPageRoutes: (_) => const LoginPage(),
