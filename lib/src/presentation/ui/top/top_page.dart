@@ -7,7 +7,7 @@ import 'package:flutter_clean_architecture/src/presentation/model/top_notificati
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_content_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
 
-const topPageRouter = '/top';
+const topPageRoutes = '/top';
 
 class TopPage extends StatelessWidget {
   const TopPage({Key? key}) : super(key: key);
