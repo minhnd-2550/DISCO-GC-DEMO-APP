@@ -64,121 +64,123 @@ class LoginPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(20.0),
-            child: BlockInfoLayout(
-              title: 'GlobalCareer.comにログイン',
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    const TextFieldInput(
-                      label: 'メールアドレス',
-                      isRequired: true,
-                      prefixIcon: Icon(Icons.email),
-                    ),
-                    const SizedBox(height: 24.0),
-                    const TextFieldInput(
-                      label: 'パスワード',
-                      isRequired: true,
-                      isVisible: false,
-                      prefixIcon: Icon(Icons.lock),
-                    ),
-                    const SizedBox(height: 32),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                _login(context);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                textStyle: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(20.0),
+              child: BlockInfoLayout(
+                title: 'GlobalCareer.comにログイン',
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      const TextFieldInput(
+                        label: 'メールアドレス',
+                        isRequired: true,
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                      const SizedBox(height: 24.0),
+                      const TextFieldInput(
+                        label: 'パスワード',
+                        isRequired: true,
+                        isVisible: false,
+                        prefixIcon: Icon(Icons.lock),
+                      ),
+                      const SizedBox(height: 32),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16.0),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  _login(context);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  textStyle: const TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w700,
+                                    color: Colors.white,
+                                  ),
+                                  backgroundColor: ColorName.primaryUserColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(40.0),
+                                  ),
+                                  elevation: 8.0,
                                 ),
-                                backgroundColor: ColorName.primaryUserColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40.0),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Text('ログイン'),
                                 ),
-                                elevation: 8.0,
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Text('ログイン'),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 16),
-                    const Text(
-                      'パスワードを忘れた方はこちら',
-                      style: TextStyle(
-                        color: Color(0xff3a50c9),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 14.0,
+                        ],
                       ),
-                      textAlign: TextAlign.center,
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        _goToRegister(context);
-                      },
-                      child: const Text(
-                        'まだ会員でない方はこちら（会員登録）',
+                      const SizedBox(height: 16),
+                      const Text(
+                        'パスワードを忘れた方はこちら',
                         style: TextStyle(
                           color: Color(0xff3a50c9),
                           fontWeight: FontWeight.w500,
                           fontSize: 14.0,
                         ),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    const SizedBox(height: 20),
-                    RichText(
-                      text: TextSpan(
-                        style: const TextStyle(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400,
-                        ),
-                        children: [
-                          const TextSpan(
-                              text:
-                                  '連続10回ログインに失敗すると、アカウントがロックされてログインできなくなります。\nログインの解除は'),
-                          TextSpan(
-                            text: 'お問い合わせ',
-                            style: const TextStyle(
-                              color: Color(0xff3a50c9),
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                launch('https://google.com');
-                              },
+                      TextButton(
+                        onPressed: () {
+                          _goToRegister(context);
+                        },
+                        child: const Text(
+                          'まだ会員でない方はこちら（会員登録）',
+                          style: TextStyle(
+                            color: Color(0xff3a50c9),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14.0,
                           ),
-                          const TextSpan(
-                              text: 'よりGlobalCareer.com事務局までご連絡ください。\n\n'
-                                  'なお、アカウントロック解除には時間がかかる場合があります。\n'
-                                  'パスワードがわからない場合は、アカウントがロックされる前に、\n'
-                                  '「パスワードを忘れた方はこちら」よりパスワードの再設定を行ってください。'),
-                        ],
+                        ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: 20),
+                      RichText(
+                        text: TextSpan(
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          children: [
+                            const TextSpan(
+                                text:
+                                    '連続10回ログインに失敗すると、アカウントがロックされてログインできなくなります。\nログインの解除は'),
+                            TextSpan(
+                              text: 'お問い合わせ',
+                              style: const TextStyle(
+                                color: Color(0xff3a50c9),
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  launch('https://google.com');
+                                },
+                            ),
+                            const TextSpan(
+                                text: 'よりGlobalCareer.com事務局までご連絡ください。\n\n'
+                                    'なお、アカウントロック解除には時間がかかる場合があります。\n'
+                                    'パスワードがわからない場合は、アカウントがロックされる前に、\n'
+                                    '「パスワードを忘れた方はこちら」よりパスワードの再設定を行ってください。'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          const Footer(),
-        ],
+            const Footer(),
+          ],
+        ),
       ),
     );
   }

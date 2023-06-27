@@ -29,7 +29,6 @@ class BasePage extends StatelessWidget {
       ListMenu(Icons.campaign, 0),
       ListMenu(Icons.favorite, 0),
       ListMenu(Icons.account_circle, 0),
-      ListMenu(Icons.local_library, 0),
     ];
     return Scaffold(
         backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
@@ -99,15 +98,15 @@ class BasePage extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        for (int i = 0; i < 8; i++)
+                        for (int i = 0; i < listIconMenu.length; i++)
                           Stack(
                             alignment: Alignment.topRight,
                             children: [
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 12.0, horizontal: 4.0),
+                                    vertical: 12.0, horizontal: 2.0),
                                 child: IconButton(
-                                  iconSize: iconWidth * 0.6 > 35
+                                  iconSize: iconWidth * 0.5 > 35
                                       ? 35
                                       : iconWidth * 0.5,
                                   onPressed: () {
