@@ -6,11 +6,17 @@ class NotificationIcon extends StatelessWidget {
   final Icon icon;
   final int notiCount;
 
-  const NotificationIcon({required this.width, required this.height, required this.icon, required this.notiCount});
+  const NotificationIcon(
+      {Key? key,
+      required this.width,
+      required this.height,
+      required this.icon,
+      required this.notiCount})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       height: height,
       child: Stack(
@@ -24,24 +30,26 @@ class NotificationIcon extends StatelessWidget {
           Positioned(
             top: 0,
             right: 0,
-            child: notiCount > 0 ? Container(
-              width: height * 0.15,
-              height: height * 0.15,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                shape: BoxShape.circle,
-              ),
-              child: Center(
-                child: Text(
-                  notiCount.toString(),
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: height * 0.1,
-                  ),
-                ),
-              ),
-            ) : Container(),
+            child: notiCount > 0
+                ? Container(
+                    width: height * 0.15,
+                    height: height * 0.15,
+                    decoration: const BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
+                      child: Text(
+                        notiCount.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: height * 0.1,
+                        ),
+                      ),
+                    ),
+                  )
+                : Container(),
           ),
         ],
       ),
