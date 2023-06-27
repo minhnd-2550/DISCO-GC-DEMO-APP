@@ -105,9 +105,9 @@ class BasePage extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    vertical: 12.0, horizontal: 4.0),
+                                    vertical: 12.0, horizontal: 2.0),
                                 child: IconButton(
-                                  iconSize: iconWidth * 0.6 > 35
+                                  iconSize: iconWidth * 0.5 > 35
                                       ? 35
                                       : iconWidth * 0.5,
                                   onPressed: () {
