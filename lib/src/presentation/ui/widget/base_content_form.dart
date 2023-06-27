@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BaseContentForm extends StatelessWidget {
-  const BaseContentForm({
-    Key? key,
-    required this.title,
-    required this.child,
-    required this.fromStepForm
-  }) : super(key: key);
+  const BaseContentForm(
+      {Key? key,
+      required this.title,
+      required this.child,
+      required this.fromStepForm})
+      : super(key: key);
   final Widget child;
   final String title;
   final bool fromStepForm;
@@ -46,36 +46,40 @@ class BaseContentForm extends StatelessWidget {
                               ],
                             ),
                           ),
-                          child: fromStepForm ? Center(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  title == "学歴" ? Icons.school : Icons.person,
-                                  color: Colors.white,
-                                  size: 16.0,
-                                ),
-                                const SizedBox(width: 8.0),
-                                Text(
-                                  title,
-                                  style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.w700,
+                          child: fromStepForm
+                              ? Center(
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        title == "学歴"
+                                            ? Icons.school
+                                            : Icons.person,
+                                        color: Colors.white,
+                                        size: 16.0,
+                                      ),
+                                      const SizedBox(width: 8.0),
+                                      Text(
+                                        title,
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 14.0,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                              : Center(
+                                  child: Text(
+                                    title,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
-                              ],
-                            ),
-                          ) : Center(
-                            child: Text(
-                              title,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
                         ),
                       ),
                     ],

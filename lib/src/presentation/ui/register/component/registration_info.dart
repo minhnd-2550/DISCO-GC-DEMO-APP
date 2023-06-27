@@ -14,7 +14,7 @@ class RegistrationInfo extends StatefulWidget {
 }
 
 class _RegistrationInfoState extends State<RegistrationInfo> {
-  bool? _checkNoCountry = false;
+  bool _checkNoCountry = false;
   String? _selectedCountry;
   bool _checkUndecided = false;
   TextEditingController startDateInput = TextEditingController();
@@ -121,7 +121,7 @@ class _RegistrationInfoState extends State<RegistrationInfo> {
                         value: _checkNoCountry,
                         onChanged: (bool? value) {
                           setState(() {
-                            _checkNoCountry = value;
+                            _checkNoCountry = value!;
                           });
                         },
                         activeColor: ColorName.primaryUserColor,
@@ -129,105 +129,107 @@ class _RegistrationInfoState extends State<RegistrationInfo> {
                       const Text('なし'),
                     ],
                   ),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
-                  const MultiLevelPicker(),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  DynamicFormFieldLabel(
-                    labelText: "滞在目的",
-                    required: true,
-                    child: DropdownButtonFormField<String>(
-                      value: _selectedCountry,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _selectedCountry = newValue;
-                        });
-                      },
-                      items: <String>[
-                        'United States',
-                        'Canada',
-                        'Mexico',
-                        'United Kingdom',
-                        'Germany',
-                        'Japan',
-                        // Add more countries as necessary
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.star),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(0),
-                          ),
-                          hintText: '滞在目的を選択してください',
-                          isDense: true,
-                          contentPadding:
-                              const EdgeInsets.symmetric(vertical: 0.0),
-                          hintStyle: const TextStyle(fontSize: 14.0)),
+                  if (!_checkNoCountry) ...[
+                    const SizedBox(
+                      height: 24.0,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  DynamicFormFieldLabel(
-                      labelText: "滞在期間",
-                      child: TextFormField(
-                        controller: startDateInput,
+                    const MultiLevelPicker(),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    DynamicFormFieldLabel(
+                      labelText: "滞在目的",
+                      required: true,
+                      child: DropdownButtonFormField<String>(
+                        value: _selectedCountry,
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            _selectedCountry = newValue;
+                          });
+                        },
+                        items: <String>[
+                          'United States',
+                          'Canada',
+                          'Mexico',
+                          'United Kingdom',
+                          'Germany',
+                          'Japan',
+                          // Add more countries as necessary
+                        ].map<DropdownMenuItem<String>>((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                         decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.event),
+                            prefixIcon: const Icon(Icons.star),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(0),
                             ),
-                            hintText: '選択してください',
+                            hintText: '滞在目的を選択してください',
                             isDense: true,
                             contentPadding:
                                 const EdgeInsets.symmetric(vertical: 0.0),
                             hintStyle: const TextStyle(fontSize: 14.0)),
-                        readOnly: true,
-                        onTap: _showStartDate,
-                      )),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  DynamicFormFieldLabel(
-                      child: TextFormField(
-                    controller: endDateInput,
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.event),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(0),
-                        ),
-                        hintText: '選択してください',
-                        isDense: true,
-                        contentPadding:
-                            const EdgeInsets.symmetric(vertical: 0.0),
-                        hintStyle: const TextStyle(fontSize: 14.0)),
-                    readOnly: true,
-                    onTap: _showEndDate,
-                  )),
-                  const SizedBox(
-                    height: 20.0,
-                  ),
-                  Row(
-                    children: [
-                      Checkbox(
-                        value: _checkUndecided,
-                        onChanged: (bool? value) {
-                          setState(() {
-                            _checkUndecided = value!;
-                          });
-                        },
-                        activeColor: ColorName.primaryUserColor,
                       ),
-                      const Text('未定'),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    DynamicFormFieldLabel(
+                        labelText: "滞在期間",
+                        child: TextFormField(
+                          controller: startDateInput,
+                          decoration: InputDecoration(
+                              prefixIcon: const Icon(Icons.event),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(0),
+                              ),
+                              hintText: '選択してください',
+                              isDense: true,
+                              contentPadding:
+                                  const EdgeInsets.symmetric(vertical: 0.0),
+                              hintStyle: const TextStyle(fontSize: 14.0)),
+                          readOnly: true,
+                          onTap: _showStartDate,
+                        )),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    DynamicFormFieldLabel(
+                        child: TextFormField(
+                      controller: endDateInput,
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.event),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(0),
+                          ),
+                          hintText: '選択してください',
+                          isDense: true,
+                          contentPadding:
+                              const EdgeInsets.symmetric(vertical: 0.0),
+                          hintStyle: const TextStyle(fontSize: 14.0)),
+                      readOnly: true,
+                      onTap: _showEndDate,
+                    )),
+                    const SizedBox(
+                      height: 20.0,
+                    ),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: _checkUndecided,
+                          onChanged: (bool? value) {
+                            setState(() {
+                              _checkUndecided = value!;
+                            });
+                          },
+                          activeColor: ColorName.primaryUserColor,
+                        ),
+                        const Text('未定'),
+                      ],
+                    ),
+                  ]
                 ],
               ),
             ),

@@ -73,11 +73,13 @@ class OfferCard extends StatelessWidget {
             ),
             child: Container(
               decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Color(0xffe0ffff), Color(0xfffefefe)],
+                  gradient: LinearGradient(
+                    colors: offerTypes == OfferTypes.preContact
+                        ? [const Color(0xffe0ffff), const Color(0xfffefefe)]
+                        : [const Color(0xffffedd1), const Color(0xfffefefe)],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
-                    stops: [0.0, 1.0],
+                    stops: const [0.0, 1.0],
                     tileMode: TileMode.clamp,
                   ),
                   border: Border.all(
