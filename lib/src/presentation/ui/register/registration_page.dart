@@ -4,6 +4,7 @@ import 'package:flutter_clean_architecture/gen/colors.gen.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/component/registration_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/component/registration_info.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/step/step_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -18,6 +19,7 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   final _formKey = GlobalKey<FormState>();
+  bool _checkConfirm = false;
 
   @override
   Widget build(BuildContext context) {
@@ -87,6 +89,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
     if (isValid) {
       _formKey.currentState!.save();
+      Navigator.pushNamed(context, stepPageRoutes);
     } else {}
   }
 
@@ -117,8 +120,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Checkbox(
-                            value: false,
-                            onChanged: (bool? value) {},
+                            value: _checkConfirm,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                _checkConfirm = value!;
+                              });
+                            },
                             activeColor: ColorName.primaryUserColor,
                           ),
                           RichText(

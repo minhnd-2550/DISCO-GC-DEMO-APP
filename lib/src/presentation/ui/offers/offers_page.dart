@@ -115,7 +115,7 @@ class _OffersPageState extends State<OffersPage> {
             itemBuilder: (context, index) {
               final offerTypes =
                   index % 2 == 0 ? OfferTypes.offer : OfferTypes.preContact;
-              final contractExpired = index % 2 == 0;
+              final contractExpired = index % 2 == 1;
               final offerStatus =
                   index % 2 == 0 ? OfferStatuses.applied : OfferStatuses.isRead;
               return OfferCard(
