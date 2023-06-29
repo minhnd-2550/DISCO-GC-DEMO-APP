@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_clean_architecture/gen/colors.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/top/top_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/button_with_icon.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
 
@@ -56,20 +57,20 @@ class Confirmation extends StatelessWidget {
         padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
-            Text(
+          children: [
+            const Text(
               "内容を確認してください。",
               style: TextStyle(color: Colors.black),
             ),
-            SizedBox(
+            const SizedBox(
               height: 16.0,
             ),
-            BasicInformation(),
-            SizedBox(
+            const BasicInformation(),
+            const SizedBox(
               height: 28.0,
             ),
-            EducationBackground(),
-            SizedBox(
+            const EducationBackground(),
+            const SizedBox(
               height: 28.0,
             ),
             ButtonWithIcon(
@@ -78,10 +79,15 @@ class Confirmation extends StatelessWidget {
               color: 0xFFfa4141,
               textFontSize: 14.0,
               textFontWeight: FontWeight.bold,
+              onPressed: () => _goToTop(context),
             )
           ],
         ),
       ),
     );
+  }
+
+  void _goToTop(BuildContext context) async {
+    await Navigator.pushNamed(context, topPageRoutes);
   }
 }

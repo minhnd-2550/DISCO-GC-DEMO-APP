@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_clean_architecture/gen/colors.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/zoom_video_sdk_provider.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/offers/offers_page.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/profile/profile_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/top/top_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
-
-const offersPageRoutes = '/offers';
 
 class ListMenu {
   final IconData icon;
@@ -85,7 +86,7 @@ class BasePage extends StatelessWidget {
                 children: [
                   Container(
                     decoration: const BoxDecoration(
-                      color: Colors.white,
+                      color: Color.fromRGBO(249, 249, 249, 1),
                       boxShadow: [
                         BoxShadow(
                           color: Color.fromRGBO(0, 0, 0, 0.1),
@@ -94,6 +95,9 @@ class BasePage extends StatelessWidget {
                           spreadRadius: 0,
                         ),
                       ],
+                      border: Border(
+                        bottom: BorderSide(width: 1, color: Color(0xffeeeeee)),
+                      ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -113,6 +117,12 @@ class BasePage extends StatelessWidget {
                                     String path = topPageRoutes;
                                     if (i == 1) {
                                       path = offersPageRoutes;
+                                    }
+                                    if (i == 3) {
+                                      path = zoomVideoSdkProviderPageRoutes;
+                                    }
+                                    if (i == 6) {
+                                      path = profilePageRoutes;
                                     }
                                     _redirect(context, path);
                                   },

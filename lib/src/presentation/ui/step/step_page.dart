@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_content_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/avatar_input.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/hexagon_shape.dart';
@@ -389,11 +390,14 @@ class StepPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 10.0),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _goToConfirm(context);
+                    },
                     style: ElevatedButton.styleFrom(
                       textStyle: const TextStyle(
                         fontSize: 15,
@@ -418,5 +422,9 @@ class StepPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _goToConfirm(BuildContext context) async {
+    await Navigator.pushNamed(context, confirmationPageRoutes);
   }
 }

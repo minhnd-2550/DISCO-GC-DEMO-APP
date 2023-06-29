@@ -6,11 +6,14 @@ class ButtonWithIcon extends StatelessWidget {
   final IconData? icons;
   final double? borderRadius;
   final int? color;
+  final int? textColor;
+  final int? iconColor;
   final double? textFontSize;
   final FontWeight? textFontWeight;
   final IconData? rightIcons;
   final double? height;
   final double? iconSize;
+  final Function? onPressed;
 
   const ButtonWithIcon({
     Key? key,
@@ -23,6 +26,9 @@ class ButtonWithIcon extends StatelessWidget {
     this.rightIcons,
     this.height,
     this.iconSize,
+    this.onPressed,
+    this.textColor,
+    this.iconColor,
   }) : super(key: key);
 
   @override
@@ -31,7 +37,11 @@ class ButtonWithIcon extends StatelessWidget {
       height: height,
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => {},
+        onPressed: () {
+          if (onPressed != null) {
+            onPressed!();
+          }
+        },
         style: ElevatedButton.styleFrom(
           fixedSize: const Size.fromHeight(40.0),
           backgroundColor: Color(color ?? 0xFF26bfa1),
@@ -46,6 +56,7 @@ class ButtonWithIcon extends StatelessWidget {
               Icon(
                 icons,
                 size: iconSize ?? 24.0,
+                color: Color(textColor ?? 0xFFffffff),
               ),
               const SizedBox(
                 width: 5,
@@ -54,7 +65,7 @@ class ButtonWithIcon extends StatelessWidget {
             Text(
               text,
               style: TextStyle(
-                color: Colors.white,
+                color: Color(textColor ?? 0xFFffffff),
                 fontSize: textFontSize ?? 16.0,
                 fontWeight: textFontWeight ?? FontWeight.w400,
               ),
