@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_clean_architecture/src/presentation/di/app_provider.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/call_screen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/intro_screen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/join_screen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/zoom_video_sdk_provider.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/offers_page.dart';
-import 'package:flutter_clean_architecture/src/presentation/ui/profile/profle_page.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/profile/profile_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/registration_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/theme/theme.dart';
@@ -13,6 +17,7 @@ import 'package:flutter_clean_architecture/src/presentation/ui/seminar/seminar_e
 import 'package:flutter_gen/gen_l10n/res.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'detail/detail_page.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class Application extends ConsumerWidget {
   const Application({Key? key}) : super(key: key);
@@ -24,6 +29,7 @@ class Application extends ConsumerWidget {
       theme: defaultTheme,
       localizationsDelegates: Resource.localizationsDelegates,
       supportedLocales: Resource.supportedLocales,
+      builder: EasyLoading.init(),
       localeResolutionCallback:
           (Locale? locale, Iterable<Locale> supportedLocales) {
         if (supportedLocales.any((element) =>
@@ -41,7 +47,7 @@ class Application extends ConsumerWidget {
         return const Locale('en', '');
       },
       routes: {
-        seminarEnterPage: (_) => const SeminarEnterPage(),
+        seminarEnterPageRoutes: (_) => const SeminarEnterPage(),
         topPageRoutes: (_) => const TopPage(),
         stepPageRoutes: (_) => const StepPage(),
         detailPageRoutes: (_) => const DetailPage(),
@@ -49,7 +55,12 @@ class Application extends ConsumerWidget {
         registrationPageRoutes: (_) => const RegistrationPage(),
         confirmationPageRoutes: (_) => const Confirmation(),
         offersPageRoutes: (_) => const OffersPage(),
-        profilePageRoute: (_) => const ProfilePage()
+        profilePageRoutes: (_) => const ProfilePage(),
+        zoomVideoSdkProviderPageRoutes: (context) =>
+            const ZoomVideoSdkProvider(),
+        joinZoomPageRoutes: (context) => const JoinScreen(),
+        callZoomPageRoutes: (context) => const CallScreen(),
+        introZoomPageRoutes: (context) => const IntroScreen(),
       },
     );
   }

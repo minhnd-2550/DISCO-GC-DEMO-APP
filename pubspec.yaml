@@ -5,7 +5,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.17.0 <3.0.0"
   flutter: '>=2.0.0'
 
 # If override conflict depends library version
@@ -64,6 +64,10 @@ dependencies:
 
   # Launch URL
   url_launcher: ^6.1.11
+  flutter_zoom_videosdk: ^1.7.0
+  permission_handler: ^10.2.0
+  dart_jsonwebtoken: ^2.4.2
+  events_emitter: ^0.5.2
 
 dev_dependencies:
   flutter_test:
@@ -90,9 +94,11 @@ dev_dependencies:
   # Lint when build
   flutter_lints: ^2.0.1
 
-  intl: ^0.18.0
+  intl: ^0.17.0
 
   badges: ^3.1.1
+
+  flutter_easyloading: ^3.0.5
 
 # Config generate when build
 flutter_gen:
@@ -120,6 +126,7 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/icons/
     - assets/images/ic_menu.png
     - assets/images/ic_netflix.png
     - assets/images/default_avatar.png
@@ -133,6 +140,3 @@ flutter:
           weight: 700
         - asset: assets/fonts/Muli-Regular.ttf
           weight: 400
-
-dependency_overrides:
-  intl: 0.18.1

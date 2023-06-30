@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/gen/assets.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/seminar/seminar_enter.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_content_form.dart';
 
@@ -174,7 +175,9 @@ class TopPage extends StatelessWidget {
                             verticalAlignment: TableCellVerticalAlignment.fill,
                             child: Center(
                               child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _goToSeminarEnter(context);
+                                },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.lightBlue[200],
                                   shape: RoundedRectangleBorder(
@@ -338,5 +341,9 @@ class TopPage extends StatelessWidget {
         )
       ],
     );
+  }
+
+  void _goToSeminarEnter(BuildContext context) async {
+    await Navigator.pushNamed(context, seminarEnterPageRoutes);
   }
 }
