@@ -10,3 +10,4 @@ export 'language_data_model.dart';
 export 'error_data_model.dart';
 export 'token_data_model.dart';
 export 'user_data_model.dart';
+export 'offer_data_model.dart';

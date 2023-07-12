@@ -78,97 +78,101 @@ class BasePage extends StatelessWidget {
             ),
           ],
         ),
-        body: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Color.fromRGBO(249, 249, 249, 1),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromRGBO(0, 0, 0, 0.1),
-                          blurRadius: 4,
-                          offset: Offset(0, 1),
-                          spreadRadius: 0,
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints:
+                    BoxConstraints(minHeight: viewportConstraints.maxHeight),
+                child: Column(
+                  children: [
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Color.fromRGBO(249, 249, 249, 1),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromRGBO(0, 0, 0, 0.1),
+                            blurRadius: 4,
+                            offset: Offset(0, 1),
+                            spreadRadius: 0,
+                          ),
+                        ],
+                        border: Border(
+                          bottom:
+                              BorderSide(width: 1, color: Color(0xffeeeeee)),
                         ),
-                      ],
-                      border: Border(
-                        bottom: BorderSide(width: 1, color: Color(0xffeeeeee)),
                       ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        for (int i = 0; i < listIconMenu.length; i++)
-                          Stack(
-                            alignment: Alignment.topRight,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 12.0, horizontal: 2.0),
-                                child: IconButton(
-                                  iconSize: iconWidth * 0.5 > 35
-                                      ? 35
-                                      : iconWidth * 0.5,
-                                  onPressed: () {
-                                    String path = topPageRoutes;
-                                    if (i == 1) {
-                                      path = offersPageRoutes;
-                                    }
-                                    if (i == 3) {
-                                      path = zoomVideoSdkProviderPageRoutes;
-                                    }
-                                    if (i == 6) {
-                                      path = profilePageRoutes;
-                                    }
-                                    _redirect(context, path);
-                                  },
-                                  icon: Icon(
-                                    listIconMenu[i].icon,
-                                    color: ColorName.primaryUserColor,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          for (int i = 0; i < listIconMenu.length; i++)
+                            Stack(
+                              alignment: Alignment.topRight,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 12.0, horizontal: 2.0),
+                                  child: IconButton(
+                                    iconSize: iconWidth * 0.5 > 35
+                                        ? 35
+                                        : iconWidth * 0.5,
+                                    onPressed: () {
+                                      String path = topPageRoutes;
+                                      if (i == 1) {
+                                        path = offersPageRoutes;
+                                      }
+                                      if (i == 3) {
+                                        path = zoomVideoSdkProviderPageRoutes;
+                                      }
+                                      if (i == 6) {
+                                        path = profilePageRoutes;
+                                      }
+                                      _redirect(context, path);
+                                    },
+                                    icon: Icon(
+                                      listIconMenu[i].icon,
+                                      color: ColorName.primaryUserColor,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Positioned(
-                                top: 10,
-                                right: 0,
-                                child: listIconMenu[i].notiCount > 0
-                                    ? Container(
-                                        width: 16.0,
-                                        height: 18.0,
-                                        decoration: const BoxDecoration(
-                                          color: Colors.red,
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            listIconMenu[i]
-                                                .notiCount
-                                                .toString(),
-                                            style: const TextStyle(
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 10,
+                                Positioned(
+                                  top: 10,
+                                  right: 0,
+                                  child: listIconMenu[i].notiCount > 0
+                                      ? Container(
+                                          width: 16.0,
+                                          height: 18.0,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.red,
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Center(
+                                            child: Text(
+                                              listIconMenu[i]
+                                                  .notiCount
+                                                  .toString(),
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 10,
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      )
-                                    : Container(),
-                              )
-                            ],
-                          ),
-                      ],
+                                        )
+                                      : Container(),
+                                )
+                              ],
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                  ...children
-                ],
+                    ...children,
+                    const Footer(),
+                  ],
+                ),
               ),
-            ),
-            const Footer(),
-          ],
+            );
+          },
         ));
   }
 

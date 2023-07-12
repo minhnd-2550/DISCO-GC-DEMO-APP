@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/src/presentation/ui/offers/component/offer_card.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/offers/component/offer_list_view.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/component/offers_filter.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_page.dart';
 
@@ -104,31 +104,7 @@ class _OffersPageState extends State<OffersPage> {
             selectedValues: selectedValues,
           ),
         ),
-        Container(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView.separated(
-            primary: false,
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-            itemCount: 4,
-            itemBuilder: (context, index) {
-              final offerTypes =
-                  index % 2 == 0 ? OfferTypes.offer : OfferTypes.preContact;
-              final contractExpired = index % 2 == 1;
-              final offerStatus =
-                  index % 2 == 0 ? OfferStatuses.applied : OfferStatuses.isRead;
-              return OfferCard(
-                contractExpired: contractExpired,
-                offerTypes: offerTypes,
-                offerStatus: offerStatus,
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(height: 16);
-            },
-          ),
-        )
+        const OfferListView(),
       ],
     );
   }

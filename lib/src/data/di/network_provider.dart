@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_clean_architecture/src/data/remote/api/offer_api.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/movie_api.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/user_api.dart';
@@ -9,7 +10,8 @@ final dioBuilderProvider = Provider<Dio>(
 );
 
 final authBuilderProvider = Provider<Dio>(
-      (ref) => DioBuilder.getInstance(options: BaseOptions(baseUrl: 'http://domain.com/refreshToken')),
+  (ref) => DioBuilder.getInstance(
+      options: BaseOptions(baseUrl: 'http://domain.com/refreshToken')),
 );
 
 final movieApiProvider = Provider<MovieApi>(
@@ -17,5 +19,9 @@ final movieApiProvider = Provider<MovieApi>(
 );
 
 final userApiProvider = Provider<UserApi>(
-      (ref) => UserApi(ref.watch(authBuilderProvider)),
+  (ref) => UserApi(ref.watch(authBuilderProvider)),
+);
+
+final offerApiProvider = Provider<OfferApi>(
+  (ref) => OfferApi(ref.watch(dioBuilderProvider)),
 );

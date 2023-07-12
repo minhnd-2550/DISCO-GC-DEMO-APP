@@ -1,4 +1,5 @@
 import 'package:enum_to_string/enum_to_string.dart';
+
 enum Flavor { dev, stag, prod }
 
 class Constants {
@@ -9,8 +10,9 @@ class Constants {
       return _instance!;
     }
 
-    final flavor = EnumToString.fromString(Flavor.values, const String.fromEnvironment('FLAVOR'));
-    switch(flavor) {
+    final flavor = EnumToString.fromString(
+        Flavor.values, const String.fromEnvironment('FLAVOR'));
+    switch (flavor) {
       case Flavor.prod:
         return Constants._prod();
 
@@ -25,7 +27,8 @@ class Constants {
 
   factory Constants._dev() {
     return const Constants(
-      endpoint: 'https://api.themoviedb.org/3/movie',
+      endpoint:
+          'https://9d820f0b-faa4-4485-8dc8-73e2a27f95c2.mock.pstmn.io/user',
       apiKey: 'd61431a2fb64b6e56c6f086952e63ab6',
     );
   }
