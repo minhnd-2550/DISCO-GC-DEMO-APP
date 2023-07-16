@@ -1,6 +1,8 @@
 import 'package:flutter_clean_architecture/src/data/local/app_storage.dart';
 import 'package:flutter_clean_architecture/src/data/movie_repository_impl.dart';
+import 'package:flutter_clean_architecture/src/data/offer_repository_impl.dart';
 import 'package:flutter_clean_architecture/src/domain/repository/movie_repository.dart';
+import 'package:flutter_clean_architecture/src/domain/repository/offer_repository.dart';
 import 'package:flutter_clean_architecture/src/presentation/di/app_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -11,5 +13,11 @@ final appStorageProvider = Provider<AppStorage>(
 );
 
 final movieRepositoryProvider = Provider<MovieRepository>(
-  (ref) => MovieRepositoryImpl(ref.watch(movieApiProvider), ref.watch(localeCodeProvider)),
+  (ref) => MovieRepositoryImpl(
+      ref.watch(movieApiProvider), ref.watch(localeCodeProvider)),
+);
+
+final offerRepositoryProvider = Provider<OfferRepository>(
+  (ref) => OfferRepositoryImpl(
+      ref.watch(offerApiProvider), ref.watch(localeCodeProvider)),
 );

@@ -5,7 +5,7 @@ import 'package:flutter_clean_architecture/src/presentation/model/movie_view_dat
 import 'package:flutter_clean_architecture/src/presentation/ui/detail/detail_page.dart';
 import 'component/view.dart';
 
-const homePageRoutes = '/';
+const homePageRoutes = '/home';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,7 +24,8 @@ class HomePage extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.only(left: 16.0),
           child: IconButton(
-            icon: const Icon(Icons.menu_rounded, color: ColorName.actionBarIconColor),
+            icon: const Icon(Icons.menu_rounded,
+                color: ColorName.actionBarIconColor),
             onPressed: () {},
           ),
         ),
@@ -32,7 +33,8 @@ class HomePage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.only(right: 16.0),
             child: IconButton(
-              icon: const Icon(Icons.search, color: ColorName.actionBarIconColor),
+              icon:
+                  const Icon(Icons.search, color: ColorName.actionBarIconColor),
               onPressed: () {},
             ),
           ),

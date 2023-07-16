@@ -5,6 +5,7 @@ import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/cal
 import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/intro_screen.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/join_screen.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/zoom_video_sdk_provider.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/home/home_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/offers_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/profile/profile_page.dart';
@@ -47,6 +48,7 @@ class Application extends ConsumerWidget {
         return const Locale('en', '');
       },
       routes: {
+        homePageRoutes: (_) => const HomePage(),
         seminarEnterPageRoutes: (_) => const SeminarEnterPage(),
         topPageRoutes: (_) => const TopPage(),
         stepPageRoutes: (_) => const StepPage(),
