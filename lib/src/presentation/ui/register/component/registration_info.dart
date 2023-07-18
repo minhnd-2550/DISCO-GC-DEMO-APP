@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture/src/master_data.dart';
 import 'package:intl/intl.dart';
 
 import 'package:flutter_clean_architecture/gen/colors.gen.dart';
@@ -12,6 +13,15 @@ class RegistrationInfo extends StatefulWidget {
   @override
   State<RegistrationInfo> createState() => _RegistrationInfoState();
 }
+
+List<ListValue> stayPurpose = [
+  ListValue(key: 1, value: "正規留学"),
+  ListValue(key: 2, value: "交換留学"),
+  ListValue(key: 3, value: "語学留学・短期留学"),
+  ListValue(key: 4, value: "就労"),
+  ListValue(key: 5, value: "家族滞在"),
+  ListValue(key: 6, value: "その他"),
+];
 
 class _RegistrationInfoState extends State<RegistrationInfo> {
   bool _checkNoCountry = false;
@@ -147,18 +157,11 @@ class _RegistrationInfoState extends State<RegistrationInfo> {
                             _selectedCountry = newValue;
                           });
                         },
-                        items: <String>[
-                          'United States',
-                          'Canada',
-                          'Mexico',
-                          'United Kingdom',
-                          'Germany',
-                          'Japan',
-                          // Add more countries as necessary
-                        ].map<DropdownMenuItem<String>>((String value) {
+                        items: stayPurpose
+                            .map<DropdownMenuItem<String>>((ListValue value) {
                           return DropdownMenuItem<String>(
-                            value: value,
-                            child: Text(value),
+                            value: value.key.toString(),
+                            child: Text(value.value),
                           );
                         }).toList(),
                         decoration: InputDecoration(
