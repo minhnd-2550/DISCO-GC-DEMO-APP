@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_clean_architecture/src/master_data.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/dynamic_form_field_label.dart';
 
 class MultiLevelPicker extends StatefulWidget {
@@ -9,8 +10,8 @@ class MultiLevelPicker extends StatefulWidget {
 }
 
 class _MultiLevelPickerState extends State<MultiLevelPicker> {
-  String? selectedContinent;
-  String? selectedNation;
+  ListValue? selectedContinent;
+  ListValue? selectedNation;
   late TextEditingController selectedNationController;
   late FocusNode selectedNationFocusNode;
 
@@ -85,8 +86,8 @@ class _MultiLevelPickerState extends State<MultiLevelPicker> {
     ],
   };
 
-  void _selectContinent(String continent) {
-    if (continent == selectedContinent) {
+  void _selectContinent(ListValue continent) {
+    if (continent.key == selectedContinent?.key) {
       setState(() {
         selectedContinent = null;
       });
@@ -97,10 +98,10 @@ class _MultiLevelPickerState extends State<MultiLevelPicker> {
     }
   }
 
-  void _selectNation(String nation) {
+  void _selectNation(ListValue nation) {
     setState(() {
       selectedNation = nation;
-      selectedNationController.text = nation;
+      selectedNationController.text = nation.value;
     });
     Navigator.pop(context, {
       'continent': selectedContinent,
@@ -120,21 +121,27 @@ class _MultiLevelPickerState extends State<MultiLevelPicker> {
             children: <Widget>[
               Expanded(
                 child: ListView.builder(
-                  itemCount: continents.length,
+                  itemCount: locationCategory.length,
                   itemBuilder: (BuildContext context, int index) {
-                    String continent = continents[index];
+                    ListValue continent = locationCategory[index];
+                    List<ListValue> filter = [];
+                    filter.addAll(location);
+                    filter.retainWhere((ListValue element) {
+                      return element.m_location_category_id == continent.key;
+                    });
                     return ExpansionTile(
-                      initiallyExpanded: selectedContinent == continent,
+                      initiallyExpanded:
+                          selectedContinent?.key == continent.key,
                       title: Text(
-                        continent,
+                        continent.value,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      children: nations[continent]!
+                      children: filter
                           .map(
                             (nation) => ListTile(
-                              title: Text(nation),
+                              title: Text(nation.value),
                               onTap: () => _selectNation(nation),
                               selected: selectedNation == nation,
                             ),
