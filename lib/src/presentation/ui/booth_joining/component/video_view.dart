@@ -5,7 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_zoom_videosdk/native/zoom_videosdk.dart';
 import 'package:flutter_zoom_videosdk/flutter_zoom_view.dart';
 
-const SHOW_TALKING_ICON_DURATION = 2000;
+const showTalkingIconDuration = 2000;
 
 class VideoView extends ZoomView {
   const VideoView({
@@ -39,29 +39,6 @@ class VideoView extends ZoomView {
             isSharing.value = sharing;
           }
         });
-      }
-
-      resetAudioStatus() {
-        isTalking.value = false;
-        isMuted.value = false;
-      }
-
-      updateAudioStatus() async {
-        if (!isMounted()) return;
-        var talking = await user?.audioStatus?.isTalking();
-        var muted = await user?.audioStatus?.isMuted();
-        isMuted.value = muted!;
-        isTalking.value = talking!;
-        if (talking) {
-          Timer(
-              const Duration(milliseconds: SHOW_TALKING_ICON_DURATION),
-              () => {
-                    if (isMounted())
-                      {
-                        isTalking.value = false,
-                      }
-                  });
-        }
       }
 
       updateVideoStatus();

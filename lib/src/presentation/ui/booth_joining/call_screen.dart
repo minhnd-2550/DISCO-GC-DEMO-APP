@@ -114,8 +114,8 @@ class _CallScreenState extends State<CallScreen> {
       Future<void>.microtask(() async {
         var token = generateJwt(args.sessionName, args.role);
         try {
-          Map<String, bool> SDKaudioOptions = {"connect": true, "mute": true};
-          Map<String, bool> SDKvideoOptions = {
+          Map<String, bool> sdkAudioOptions = {"connect": true, "mute": true};
+          Map<String, bool> sdkVideoOptions = {
             "localVideoOn": true,
           };
           JoinSessionConfig joinSession = JoinSessionConfig(
@@ -123,8 +123,8 @@ class _CallScreenState extends State<CallScreen> {
             sessionPassword: args.sessionPwd,
             token: token,
             userName: args.displayName,
-            audioOptions: SDKaudioOptions,
-            videoOptions: SDKvideoOptions,
+            audioOptions: sdkAudioOptions,
+            videoOptions: sdkVideoOptions,
             sessionIdleTimeoutMins: int.parse(args.sessionIdleTimeoutMins),
           );
           await zoom.joinSession(joinSession);
@@ -840,7 +840,7 @@ class _CallScreenState extends State<CallScreen> {
           onTap: () async => {
             debugPrint('user volume'),
             userVolume = await user.getUserVolume(user.userId, isShareAudio),
-            debugPrint('user ${user.userName}\'s volume is ${userVolume!}'),
+            debugPrint('user ${user.userName}\'s volume is $userVolume'),
           },
         ),
       ];

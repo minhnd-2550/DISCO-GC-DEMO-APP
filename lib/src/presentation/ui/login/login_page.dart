@@ -10,6 +10,7 @@ import 'package:flutter_clean_architecture/src/presentation/ui/widget/text_input
 import 'package:url_launcher/url_launcher.dart';
 
 const loginPageRoutes = '/';
+// const loginPageRoutes = '/x';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);

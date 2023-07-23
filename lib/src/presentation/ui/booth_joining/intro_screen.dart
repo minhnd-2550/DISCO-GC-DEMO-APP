@@ -117,7 +117,6 @@ class IntroScreenState extends State<IntroScreen> {
     if (!Platform.isAndroid && !Platform.isIOS) {}
     bool blocked = false;
     List<Permission>? notGranted = [];
-    PermissionStatus result;
     List<Permission>? permissions = Platform.isAndroid
         ? platformPermissions["android"]
         : platformPermissions["ios"];

@@ -1,101 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_clean_architecture/gen/colors.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/base/base_stateless_view.dart';
+import 'package:flutter_clean_architecture/src/presentation/di/view_model_provider.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/component/registration_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/component/registration_info.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/register/registration_view_model.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/step/step_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/widget/loading.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const registrationPageRoutes = '/register';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({Key? key}) : super(key: key);
+class RegistrationPage extends BaseStatelessView<RegistrationViewModel> {
+  RegistrationPage({Key? key}) : super(key: key);
 
-  @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
-}
-
-class _RegistrationPageState extends State<RegistrationPage> {
   final _formKey = GlobalKey<FormState>();
-  bool _checkConfirm = false;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: ColorName.backgroundColor,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFF26BFA1),
-                Color(0xFF1AA1A3),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          // Status bar color
-          statusBarColor: Colors.white,
-          // Status bar brightness (optional)
-          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          statusBarBrightness: Brightness.light, // For iOS (dark icons)
-        ),
-        elevation: 0,
-        title: const Text(
-          'GlobalCareer.com',
-          style: TextStyle(
-              fontSize: 28, color: Colors.white, fontStyle: FontStyle.italic),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.mail,
-              color: Colors.white,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.info, color: Colors.white),
-          ),
-          IconButton(
-            onPressed: () {
-              _goToLogin(context);
-            },
-            icon: const Icon(
-              Icons.login_outlined,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(child: _createBody(context)),
-          const Footer(),
-        ],
-      ),
-      resizeToAvoidBottomInset: false,
-    );
-  }
-
-  void _submitForm(BuildContext context) async {
+  void _submitForm(BuildContext context, ref, callbackMethod) async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       _formKey.currentState!.save();
-      Navigator.pushNamed(context, stepPageRoutes);
+      var registrationResult = await ref
+          .watch(registrationViewModelProvider.notifier)
+          .registration(context);
+      if (registrationResult) {
+        callbackMethod();
+      }
     } else {}
   }
 
   Widget _createBody(BuildContext context) {
+    void callbackMethod() async {
+      await Navigator.pushNamed(context, stepPageRoutes);
+    }
+
     return Consumer(builder: (context, ref, _) {
+      var checkConfirm = ref.watch(registrationViewModelProvider).checkConfirm;
       return Listener(
         onPointerDown: (PointerDownEvent event) =>
             FocusManager.instance.primaryFocus?.unfocus(),
@@ -121,11 +65,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Checkbox(
-                            value: _checkConfirm,
+                            value: checkConfirm,
                             onChanged: (bool? value) {
-                              setState(() {
-                                _checkConfirm = value!;
-                              });
+                              ref
+                                  .watch(registrationViewModelProvider)
+                                  .toggleConfirm();
                             },
                             activeColor: ColorName.primaryUserColor,
                           ),
@@ -151,7 +95,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         child: SizedBox(
                           height: 40,
                           child: ElevatedButton(
-                            onPressed: () => {_submitForm(context)},
+                            onPressed: () =>
+                                {_submitForm(context, ref, callbackMethod)},
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: ColorName.primaryUserColor,
                                 shape: RoundedRectangleBorder(
@@ -180,4 +125,85 @@ class _RegistrationPageState extends State<RegistrationPage> {
   void _goToLogin(BuildContext context) async {
     await Navigator.pushNamed(context, loginPageRoutes);
   }
+
+  @override
+  Widget createView(BuildContext context) {
+    return Consumer(builder: (context, ref, _) {
+      final registrationResult = ref.watch(registrationViewModelProvider
+          .select((value) => value.registrationResult));
+      return registrationResult.when(data: (data) {
+        return Scaffold(
+          backgroundColor: ColorName.backgroundColor,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    Color(0xFF26BFA1),
+                    Color(0xFF1AA1A3),
+                  ],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                ),
+              ),
+            ),
+            systemOverlayStyle: const SystemUiOverlayStyle(
+              // Status bar color
+              statusBarColor: Colors.white,
+              // Status bar brightness (optional)
+              statusBarIconBrightness:
+                  Brightness.dark, // For Android (dark icons)
+              statusBarBrightness: Brightness.light, // For iOS (dark icons)
+            ),
+            elevation: 0,
+            title: const Text(
+              'GlobalCareer.com',
+              style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.white,
+                  fontStyle: FontStyle.italic),
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.mail,
+                  color: Colors.white,
+                ),
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.info, color: Colors.white),
+              ),
+              IconButton(
+                onPressed: () {
+                  _goToLogin(context);
+                },
+                icon: const Icon(
+                  Icons.login_outlined,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+          body: Column(
+            children: [
+              Expanded(child: _createBody(context)),
+              const Footer(),
+            ],
+          ),
+          resizeToAvoidBottomInset: false,
+        );
+      }, loading: () {
+        return const Loading();
+      }, error: (e, s) {
+        return const SizedBox();
+      });
+    });
+  }
+
+  @override
+  ProviderBase<RegistrationViewModel> get viewModelProvider =>
+      registrationViewModelProvider;
 }

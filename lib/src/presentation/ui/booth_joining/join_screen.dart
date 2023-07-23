@@ -7,7 +7,7 @@ import 'intro_screen.dart';
 const joinZoomPageRoutes = '/join';
 
 String getDefaultSessionName() {
-  var DEFAULT_SESSION_NAMES = [
+  var defaultSessionNames = [
     'grand-canyon',
     'yosemite',
     'yellowstone',
@@ -20,7 +20,7 @@ String getDefaultSessionName() {
     'lake-tahoe',
   ];
   String defaultSessionName =
-      '${DEFAULT_SESSION_NAMES[Random().nextInt(DEFAULT_SESSION_NAMES.length)]}-${Random().nextInt(1000)}';
+      '${defaultSessionNames[Random().nextInt(defaultSessionNames.length)]}-${Random().nextInt(1000)}';
 
   return defaultSessionName;
 }
