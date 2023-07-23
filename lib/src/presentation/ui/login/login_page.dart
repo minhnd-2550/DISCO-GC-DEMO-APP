@@ -17,15 +17,18 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const loginPageRoutes = '/';
 
-final loginPageViewModelProvider = ChangeNotifierProvider((ref) => LoginPageViewModel());
+final loginPageViewModelProvider =
+    ChangeNotifierProvider((ref) => LoginPageViewModel());
 
 class LoginPage extends HookConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    LoginPageViewModel loginPageViewModel = ref.watch(loginPageViewModelProvider);
-    LoginResponseDataModel loginResponseDataModel = loginPageViewModel.loginResponseDataModel;
+    LoginPageViewModel loginPageViewModel =
+        ref.watch(loginPageViewModelProvider);
+    LoginResponseDataModel loginResponseDataModel =
+        loginPageViewModel.loginResponseDataModel;
     bool isLoading = loginPageViewModel.loading;
 
     WidgetsBinding.instance!.addPostFrameCallback((_) {
@@ -34,7 +37,7 @@ class LoginPage extends HookConsumerWidget {
       }
     });
 
-    if(isLoading == true) {
+    if (isLoading == true) {
       return const Loading();
     } else {
       return Scaffold(
@@ -56,7 +59,8 @@ class LoginPage extends HookConsumerWidget {
             // Status bar color
             statusBarColor: Colors.white,
             // Status bar brightness (optional)
-            statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+            statusBarIconBrightness:
+                Brightness.dark, // For Android (dark icons)
             statusBarBrightness: Brightness.light, // For iOS (dark icons)
           ),
           elevation: 0,
@@ -115,8 +119,8 @@ class LoginPage extends HookConsumerWidget {
                           children: [
                             Expanded(
                               child: Padding(
-                                padding:
-                                const EdgeInsets.symmetric(horizontal: 16.0),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
                                 child: ElevatedButton(
                                   onPressed: () {
                                     _invokeLogin(loginPageViewModel);
@@ -176,7 +180,7 @@ class LoginPage extends HookConsumerWidget {
                             children: [
                               const TextSpan(
                                   text:
-                                  '連続10回ログインに失敗すると、アカウントがロックされてログインできなくなります。\nログインの解除は'),
+                                      '連続10回ログインに失敗すると、アカウントがロックされてログインできなくなります。\nログインの解除は'),
                               TextSpan(
                                 text: 'お問い合わせ',
                                 style: const TextStyle(
@@ -209,7 +213,8 @@ class LoginPage extends HookConsumerWidget {
   }
 
   void _invokeLogin(LoginPageViewModel loginPageViewModel) {
-    final AccountLoginDataModel account = AccountLoginDataModel(email: "", password: "");
+    final AccountLoginDataModel account =
+        AccountLoginDataModel(email: "", password: "");
     final LoginDataModel loginDataModel = LoginDataModel(user: account);
     loginPageViewModel.login(loginDataModel);
   }

@@ -19,14 +19,14 @@ class RegistrationPage extends BaseStatelessView<RegistrationViewModel> {
 
   final _formKey = GlobalKey<FormState>();
 
-  void _submitForm(BuildContext context, ref, callbackMethod) async {
+  void _submitForm(ref, callbackMethod) async {
     final isValid = _formKey.currentState!.validate();
 
     if (isValid) {
       _formKey.currentState!.save();
       var registrationResult = await ref
           .watch(registrationViewModelProvider.notifier)
-          .registration(context);
+          .registration();
       if (registrationResult) {
         callbackMethod();
       }
@@ -95,8 +95,7 @@ class RegistrationPage extends BaseStatelessView<RegistrationViewModel> {
                         child: SizedBox(
                           height: 40,
                           child: ElevatedButton(
-                            onPressed: () =>
-                                {_submitForm(context, ref, callbackMethod)},
+                            onPressed: () => {_submitForm(ref, callbackMethod)},
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: ColorName.primaryUserColor,
                                 shape: RoundedRectangleBorder(

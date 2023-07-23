@@ -16,7 +16,8 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const stepPageRoutes = '/step';
 
-final stepPageViewModelProvider = ChangeNotifierProvider((ref) => StepPageViewModel());
+final stepPageViewModelProvider =
+    ChangeNotifierProvider((ref) => StepPageViewModel());
 
 class StepPage extends HookConsumerWidget {
   const StepPage({Key? key}) : super(key: key);
@@ -250,11 +251,12 @@ class StepPage extends HookConsumerWidget {
 
     StepPageViewModel stepPageViewModel = ref.watch(stepPageViewModelProvider);
 
-    ProfileCurrentDataModel profileCurrentDataModel = stepPageViewModel.profileCurrentDataModel;
+    ProfileCurrentDataModel profileCurrentDataModel =
+        stepPageViewModel.profileCurrentDataModel;
     bool isLoading = stepPageViewModel.loading;
-    if(isLoading == true) {
+    if (isLoading == true) {
       return const Loading();
-    } else if(profileCurrentDataModel.id != null) {
+    } else if (profileCurrentDataModel.id != null) {
       listInfoField = processData(listInfoField, profileCurrentDataModel);
 
       return Scaffold(
@@ -275,7 +277,8 @@ class StepPage extends HookConsumerWidget {
           ),
           systemOverlayStyle: const SystemUiOverlayStyle(
             statusBarColor: Colors.white,
-            statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+            statusBarIconBrightness:
+                Brightness.dark, // For Android (dark icons)
             statusBarBrightness: Brightness.light, // For iOS (dark icons)
           ),
           elevation: 0,
@@ -330,7 +333,7 @@ class StepPage extends HookConsumerWidget {
                     return Row(
                       children: List.generate(
                         5,
-                            (index) => HexagonShape(
+                        (index) => HexagonShape(
                           size: hexagonSize,
                           color: index == 0
                               ? ColorName.primaryStepColor
@@ -363,7 +366,7 @@ class StepPage extends HookConsumerWidget {
                           Column(
                             children: List.generate(
                               listInfoField.length,
-                                  (index) {
+                              (index) {
                                 return Column(
                                   children: [
                                     StepTextFieldInput(
@@ -389,12 +392,12 @@ class StepPage extends HookConsumerWidget {
                           Column(
                             children: List.generate(
                               listEducationField.length,
-                                  (index) {
+                              (index) {
                                 return Column(
                                   children: [
                                     StepTextFieldInput(
                                         stepFieldModel:
-                                        listEducationField[index]),
+                                            listEducationField[index]),
                                     const SizedBox(height: 30.0),
                                   ],
                                 );
@@ -438,7 +441,7 @@ class StepPage extends HookConsumerWidget {
         ),
       );
     } else {
-      return SizedBox();
+      return const SizedBox();
     }
   }
 
@@ -446,23 +449,29 @@ class StepPage extends HookConsumerWidget {
     await Navigator.pushNamed(context, confirmationPageRoutes);
   }
 
-  List<StepFieldModel> processData(List<StepFieldModel> list, ProfileCurrentDataModel profileCurrentDataModel) {
+  List<StepFieldModel> processData(List<StepFieldModel> list,
+      ProfileCurrentDataModel profileCurrentDataModel) {
     List<StepFieldModel> newList = list;
     newList.forEach((element) {
-      if(element.title == "氏名") {
+      if (element.title == "氏名") {
         element.listField[0].data = TextEditingController();
         element.listField[1].data = TextEditingController();
-        element.listField[0].data!.text = profileCurrentDataModel.firstNameJa ?? "";
-        element.listField[1].data!.text = profileCurrentDataModel.lastNameJa ?? "";
-      } else if(element.title == "氏名（カタカナ）") {
+        element.listField[0].data!.text =
+            profileCurrentDataModel.firstNameJa ?? "";
+        element.listField[1].data!.text =
+            profileCurrentDataModel.lastNameJa ?? "";
+      } else if (element.title == "氏名（カタカナ）") {
         element.listField[0].data = TextEditingController();
         element.listField[1].data = TextEditingController();
-        element.listField[0].data!.text = profileCurrentDataModel.firstNameRomaji ?? "";
-        element.listField[1].data!.text = profileCurrentDataModel.lastNameRomaji ?? "";
-      } else if(element.title == "ニックネーム必") {
+        element.listField[0].data!.text =
+            profileCurrentDataModel.firstNameRomaji ?? "";
+        element.listField[1].data!.text =
+            profileCurrentDataModel.lastNameRomaji ?? "";
+      } else if (element.title == "ニックネーム必") {
         element.listField[0].data = TextEditingController();
-        element.listField.first.data!.text = profileCurrentDataModel.nickName ?? "";
-      } else if(element.title == "メールアドレス") {
+        element.listField.first.data!.text =
+            profileCurrentDataModel.nickName ?? "";
+      } else if (element.title == "メールアドレス") {
         element.descriptionTitle = profileCurrentDataModel.email ?? "";
       }
     });

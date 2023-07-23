@@ -21,6 +21,7 @@ class OfferCard extends StatelessWidget {
   final CompanyOfferDataModel company;
   final DetailOfferDataModel details;
   final bool? isRead;
+  final Function() openOfferDetail;
 
   const OfferCard(
       {Key? key,
@@ -32,7 +33,8 @@ class OfferCard extends StatelessWidget {
       this.sendTime,
       required this.company,
       required this.details,
-      this.isRead})
+      this.isRead,
+      required this.openOfferDetail})
       : super(key: key);
 
   @override
@@ -264,12 +266,13 @@ class OfferCard extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const ButtonWithIcon(
+                  ButtonWithIcon(
                     textFontSize: 14.0,
                     iconSize: 16.0,
                     height: 32.0,
                     text: '詳細を見る',
                     rightIcons: Icons.arrow_forward_ios,
+                    onPressed: openOfferDetail,
                   )
                 ],
               ),

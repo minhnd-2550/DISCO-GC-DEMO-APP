@@ -1,5 +1,3 @@
-import 'dart:ffi';
-import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter_clean_architecture/src/data/model/profile_avatar_data_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 

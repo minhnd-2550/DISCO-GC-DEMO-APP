@@ -1,10 +1,9 @@
-import 'package:flutter_clean_architecture/src/data/model/models.dart';
 import 'package:flutter_clean_architecture/src/domain/repository/profile_current_repository.dart';
 import 'package:flutter_clean_architecture/src/data/model/profile_current_data_model.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/usecase.dart';
-import 'package:flutter_clean_architecture/src/data/remote/response/profile_current_response.dart';
 
-class FetchProfileCurrentUseCase extends UseCase<String, ProfileCurrentDataModel> {
+class FetchProfileCurrentUseCase
+    extends UseCase<String, ProfileCurrentDataModel> {
   final ProfileCurrentRepository _profileCurrentRepository;
 
   FetchProfileCurrentUseCase({required ProfileCurrentRepository repository})
