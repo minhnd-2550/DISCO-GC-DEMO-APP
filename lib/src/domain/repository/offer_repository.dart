@@ -1,5 +1,5 @@
 import '../../data/model/models.dart';
 
 abstract class OfferRepository {
-  Future<List<OfferDataModel>> fetchOffers(String? type);
+  Future<List<OfferDataModel>> fetchOffers();
 }

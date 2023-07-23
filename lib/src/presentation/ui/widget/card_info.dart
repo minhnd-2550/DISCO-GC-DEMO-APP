@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CardInfo extends StatelessWidget {
-  const CardInfo(this.icon, this.label, this.content, {Key? key}) : super(key: key);
+  const CardInfo(this.icon, this.label, this.content, {Key? key})
+      : super(key: key);
   final Icon icon;
   final String label;
   final String content;
@@ -23,10 +23,9 @@ class CardInfo extends StatelessWidget {
                 Text(
                   label,
                   style: const TextStyle(
-                    color: Colors.white,
+                      color: Colors.white,
                       fontSize: 12.0,
-                      fontWeight: FontWeight.w500
-                  ),
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -36,10 +35,7 @@ class CardInfo extends StatelessWidget {
         Text(
           content,
           style: const TextStyle(
-              color: Colors.black,
-              fontSize: 12.0,
-              fontWeight: FontWeight.w500
-          ),
+              color: Colors.black, fontSize: 12.0, fontWeight: FontWeight.w500),
         )
       ],
     );
