@@ -94,7 +94,7 @@ dev_dependencies:
   # Lint when build
   flutter_lints: ^2.0.1
 
-  intl: ^0.18.0
+  intl: ^0.17.0
 
   badges: ^3.1.1
 

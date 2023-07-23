@@ -25,7 +25,6 @@ class LoginPageViewModel extends ChangeNotifier {
   }
 
   login(LoginDataModel loginDataModel) async {
-    print("huy call api");
     setLoading(true);
 
     Dio dio = Dio(

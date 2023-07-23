@@ -1,5 +1,6 @@
 import 'package:flutter_clean_architecture/src/presentation/base/loading_state_view_model.dart';
 import 'package:flutter_clean_architecture/src/presentation/di/use_case_provider.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation_view_model.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/detail/detail_view_model.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/home/home_view_model.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/offers_view_model.dart';
@@ -39,4 +40,10 @@ final detailViewModelProvider =
     getMovieImageUseCase: ref.watch(getMovieImageUseCaseProvider),
     getMovieInfoUseCase: ref.watch(getMovieInfoUseCaseProvider),
   ),
+);
+
+final confirmationViewModelProvider =
+    ChangeNotifierProvider<ConfirmationViewModel>(
+  (ref) => ConfirmationViewModel(
+      confirmationUseCase: ref.watch(confirmationUseCaseProvider)),
 );

@@ -11,7 +11,7 @@ import 'package:flutter_clean_architecture/src/presentation/ui/offers/offers_pag
 import 'package:flutter_clean_architecture/src/presentation/ui/pre_contact_detail/pre_contact_detail_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/profile/profile_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/registration_page.dart';
-import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/theme/theme.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/step/step_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/top/top_page.dart';
@@ -54,7 +54,7 @@ class Application extends ConsumerWidget {
         detailPageRoutes: (_) => const DetailPage(),
         loginPageRoutes: (_) => const LoginPage(),
         registrationPageRoutes: (_) => RegistrationPage(),
-        confirmationPageRoutes: (_) => const Confirmation(),
+        confirmationPageRoutes: (_) => const ConfirmationPage(),
         offersPageRoutes: (_) => const OffersPage(),
         preContactDetailPageRoutes: (_) => const PreContactDetailPage(),
         profilePageRoutes: (_) => const ProfilePage(),
