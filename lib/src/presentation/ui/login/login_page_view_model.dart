@@ -1,5 +1,3 @@
-import 'package:flutter_clean_architecture/src/domain/exception/base_exception.dart';
-import 'package:flutter_clean_architecture/src/presentation/base/base_view_model.dart';
 import 'package:flutter_clean_architecture/src/data/model/login_data_model.dart';
 import 'package:flutter_clean_architecture/src/data/model/login_response_data_model.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/login_api.dart';
@@ -15,8 +13,7 @@ class LoginPageViewModel extends ChangeNotifier {
   bool get loading => _loading;
   LoginResponseDataModel get loginResponseDataModel => _loginResponseDataModel;
 
-  LoginPageViewModel() {
-  }
+  LoginPageViewModel() {}
 
   setLoading(bool loading) async {
     _loading = loading;
@@ -39,7 +36,8 @@ class LoginPageViewModel extends ChangeNotifier {
 
     final LoginApi loginApi = LoginApi(dio);
 
-    var response = await LoginRepositoryImpl(loginApi: loginApi).login(loginDataModel);
+    var response =
+        await LoginRepositoryImpl(loginApi: loginApi).login(loginDataModel);
     setResponse(response);
     setLoading(false);
   }

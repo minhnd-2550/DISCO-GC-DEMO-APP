@@ -1,6 +1,3 @@
-import 'package:flutter_clean_architecture/src/constants.dart';
-import 'package:flutter_clean_architecture/src/data/app_error.dart';
-import 'package:flutter_clean_architecture/src/data/mapper/exception_mapper.dart';
 import 'package:flutter_clean_architecture/src/data/model/login_data_model.dart';
 import 'package:flutter_clean_architecture/src/data/model/login_response_data_model.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/login_api.dart';
@@ -15,8 +12,8 @@ class LoginRepositoryImpl implements LoginRepository {
 
   @override
   Future<LoginResponseDataModel> login(LoginDataModel loginDataModel) async {
-    final LoginResponseDataModel response = await _loginApi.login(loginDataModel).catchError((object) {
-      print(object);
+    final LoginResponseDataModel response =
+        await _loginApi.login(loginDataModel).catchError((object) {
       throw object;
     });
     return response;

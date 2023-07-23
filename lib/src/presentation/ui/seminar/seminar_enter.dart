@@ -8,20 +8,22 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const seminarEnterPageRoutes = '/seminar';
 
-final seminarEnterViewModelProvider = ChangeNotifierProvider((ref) => SeminarEnterViewModel());
+final seminarEnterViewModelProvider =
+    ChangeNotifierProvider((ref) => SeminarEnterViewModel());
 
 class SeminarEnterPage extends HookConsumerWidget {
   const SeminarEnterPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    SeminarEnterViewModel seminarEnterViewModel = ref.watch(seminarEnterViewModelProvider);
+    SeminarEnterViewModel seminarEnterViewModel =
+        ref.watch(seminarEnterViewModelProvider);
     SeminarDataModel seminarDataModel = seminarEnterViewModel.seminarDataModel;
     bool isLoading = seminarEnterViewModel.loading;
 
-    if(isLoading == true) {
+    if (isLoading == true) {
       return const Loading();
-    } else if(seminarDataModel.onlineSeminar != null) {
+    } else if (seminarDataModel.onlineSeminar != null) {
       return BasePage(children: [
         Padding(
           padding: const EdgeInsets.only(left: 15, right: 15, top: 30),
@@ -30,7 +32,7 @@ class SeminarEnterPage extends HookConsumerWidget {
             children: [
               Text(
                 seminarDataModel.onlineSeminar!.name ?? "",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -39,7 +41,7 @@ class SeminarEnterPage extends HookConsumerWidget {
               const SizedBox(height: 10),
               Text(
                 seminarDataModel.onlineSeminar!.content ?? "",
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.normal,
                   color: Colors.black,
@@ -60,18 +62,20 @@ class SeminarEnterPage extends HookConsumerWidget {
                   padding: const EdgeInsets.all(5),
                   child: RichText(
                     text: TextSpan(
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         color: Colors.black,
                       ),
                       children: [
                         TextSpan(
-                          text: seminarDataModel.onlineSeminar!.periodOfExhibition ?? "",
-                          style: TextStyle(
+                          text: seminarDataModel
+                                  .onlineSeminar!.periodOfExhibition ??
+                              "",
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: '会場は、終了時間経過後10分で強制終了します.',
                         ),
                       ],
@@ -92,8 +96,8 @@ class SeminarEnterPage extends HookConsumerWidget {
                           topRight: Radius.circular(10)),
                     ),
                     child: const Padding(
-                      padding:
-                      EdgeInsets.only(top: 10, left: 8, right: 8, bottom: 10),
+                      padding: EdgeInsets.only(
+                          top: 10, left: 8, right: 8, bottom: 10),
                       child: Text(
                         "参加企業",
                         style: TextStyle(
@@ -114,8 +118,8 @@ class SeminarEnterPage extends HookConsumerWidget {
                           topRight: Radius.circular(10)),
                     ),
                     child: const Padding(
-                      padding:
-                      EdgeInsets.only(top: 10, left: 8, right: 8, bottom: 10),
+                      padding: EdgeInsets.only(
+                          top: 10, left: 8, right: 8, bottom: 10),
                       child: Text(
                         "※加マニュアル",
                         style: TextStyle(
@@ -170,13 +174,13 @@ class SeminarEnterPage extends HookConsumerWidget {
                           color: Colors.grey[350],
                           child: const Center(
                               child: Text(
-                                '企業名',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                                textAlign: TextAlign.center,
-                              )),
+                            '企業名',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          )),
                         ),
                       ),
                       TableCell(
@@ -185,13 +189,13 @@ class SeminarEnterPage extends HookConsumerWidget {
                           color: Colors.grey[350],
                           child: const Center(
                               child: Text(
-                                '機能',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black,
-                                ),
-                                textAlign: TextAlign.center,
-                              )),
+                            '機能',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
+                            textAlign: TextAlign.center,
+                          )),
                         ),
                       ),
                       TableCell(
@@ -249,11 +253,13 @@ class SeminarEnterPage extends HookConsumerWidget {
                       TableCell(
                         verticalAlignment: TableCellVerticalAlignment.middle,
                         child: Padding(
-                          padding:
-                          EdgeInsets.only(left: 4.0, top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                              left: 4.0, top: 8.0, bottom: 8.0),
                           child: Text(
-                            seminarDataModel.boothCompanies?[0]?.boothCompany?.officialName ?? "",
-                            style: TextStyle(
+                            seminarDataModel.boothCompanies?[0]?.boothCompany
+                                    ?.officialName ??
+                                "",
+                            style: const TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                             ),
@@ -295,8 +301,8 @@ class SeminarEnterPage extends HookConsumerWidget {
                               child: const Padding(
                                 padding: EdgeInsets.only(
                                     top: 10, left: 10, right: 10, bottom: 10),
-                                child:
-                                Icon(Icons.message_sharp, color: Colors.grey),
+                                child: Icon(Icons.message_sharp,
+                                    color: Colors.grey),
                               ),
                             ),
                           ],
@@ -305,22 +311,26 @@ class SeminarEnterPage extends HookConsumerWidget {
                       TableCell(
                         verticalAlignment: TableCellVerticalAlignment.middle,
                         child: Padding(
-                          padding:
-                          EdgeInsets.only(left: 4.0, top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                              left: 4.0, top: 8.0, bottom: 8.0),
                           child: Text(
-                            seminarDataModel.boothCompanies?[0]?.boothCompanyName ?? "",
-                            style: TextStyle(
-                                color: Colors.black, fontWeight: FontWeight.bold),
+                            seminarDataModel
+                                    .boothCompanies?[0]?.boothCompanyName ??
+                                "",
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
                       TableCell(
                         child: Padding(
-                          padding:
-                          EdgeInsets.only(left: 4.0, top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                              left: 4.0, top: 8.0, bottom: 8.0),
                           child: Text(
-                            seminarDataModel.boothCompanies?[0]?.description ?? "",
-                            style: TextStyle(
+                            seminarDataModel.boothCompanies?[0]?.description ??
+                                "",
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
@@ -352,11 +362,13 @@ class SeminarEnterPage extends HookConsumerWidget {
                       TableCell(
                         verticalAlignment: TableCellVerticalAlignment.middle,
                         child: Padding(
-                          padding:
-                          EdgeInsets.only(left: 4.0, top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                              left: 4.0, top: 8.0, bottom: 8.0),
                           child: Text(
-                            seminarDataModel.boothCompanies?[1]?.boothCompany?.officialName ?? "",
-                            style: TextStyle(
+                            seminarDataModel.boothCompanies?[1]?.boothCompany
+                                    ?.officialName ??
+                                "",
+                            style: const TextStyle(
                               color: Colors.blue,
                               fontWeight: FontWeight.bold,
                             ),
@@ -398,8 +410,8 @@ class SeminarEnterPage extends HookConsumerWidget {
                               child: const Padding(
                                 padding: EdgeInsets.only(
                                     top: 10, left: 10, right: 10, bottom: 10),
-                                child:
-                                Icon(Icons.message_sharp, color: Colors.grey),
+                                child: Icon(Icons.message_sharp,
+                                    color: Colors.grey),
                               ),
                             ),
                           ],
@@ -408,22 +420,26 @@ class SeminarEnterPage extends HookConsumerWidget {
                       TableCell(
                         verticalAlignment: TableCellVerticalAlignment.middle,
                         child: Padding(
-                          padding:
-                          EdgeInsets.only(left: 4.0, top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                              left: 4.0, top: 8.0, bottom: 8.0),
                           child: Text(
-                            seminarDataModel.boothCompanies?[1]?.boothCompanyName ?? "",
-                            style: TextStyle(
-                                color: Colors.black, fontWeight: FontWeight.bold),
+                            seminarDataModel
+                                    .boothCompanies?[1]?.boothCompanyName ??
+                                "",
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
                       TableCell(
                         child: Padding(
-                          padding:
-                          EdgeInsets.only(left: 4.0, top: 8.0, bottom: 8.0),
+                          padding: const EdgeInsets.only(
+                              left: 4.0, top: 8.0, bottom: 8.0),
                           child: Text(
-                            seminarDataModel.boothCompanies?[1]?.description ?? "",
-                            style: TextStyle(
+                            seminarDataModel.boothCompanies?[1]?.description ??
+                                "",
+                            style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               decoration: TextDecoration.underline,
@@ -475,7 +491,7 @@ class SeminarEnterPage extends HookConsumerWidget {
         )
       ]);
     } else {
-      return SizedBox();
+      return const SizedBox();
     }
   }
 

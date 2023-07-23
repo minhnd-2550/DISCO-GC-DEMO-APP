@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/component/offer_list_view.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/component/offers_filter.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/pre_contact_detail/pre_contact_detail_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_page.dart';
 
 const offersPageRoutes = '/offers';
@@ -105,8 +106,14 @@ class _OffersPageState extends State<OffersPage> {
             selectedValues: selectedValues,
           ),
         ),
-        const OfferListView(),
+        OfferListView(openOfferDetail: () {
+          _openOfferDetail(context);
+        }),
       ],
     );
+  }
+
+  void _openOfferDetail(BuildContext context) async {
+    await Navigator.pushNamed(context, preContactDetailPageRoutes);
   }
 }

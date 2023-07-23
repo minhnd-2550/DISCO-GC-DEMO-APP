@@ -8,9 +8,9 @@ import 'package:flutter_clean_architecture/src/presentation/ui/widget/loading.da
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 class OfferListView extends BaseStatelessView<OffersViewModel> {
-  const OfferListView({
-    Key? key,
-  }) : super(key: key);
+  final Function() openOfferDetail;
+  const OfferListView({Key? key, required this.openOfferDetail})
+      : super(key: key);
 
   @override
   Widget createView(BuildContext context) {
@@ -58,6 +58,7 @@ class OfferListView extends BaseStatelessView<OffersViewModel> {
             sendTime: offers[index].sendTime,
             company: offers[index].company!,
             details: offers[index].details!,
+            openOfferDetail: openOfferDetail,
           );
         },
         separatorBuilder: (context, index) {
