@@ -10,6 +10,6 @@ class FetchOfferUseCase extends UseCase<String, List<OfferDataModel>> {
 
   @override
   Future<List<OfferDataModel>> createObservable(String params) {
-    return _offerRepository.fetchOffers(params);
+    return _offerRepository.fetchOffers();
   }
 }

@@ -8,6 +8,7 @@ import 'package:flutter_clean_architecture/src/presentation/ui/booth_joining/zoo
 import 'package:flutter_clean_architecture/src/presentation/ui/home/home_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/login/login_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/offers/offers_page.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/pre_contact_detail/pre_contact_detail_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/profile/profile_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/register/registration_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation.dart';
@@ -18,7 +19,6 @@ import 'package:flutter_clean_architecture/src/presentation/ui/seminar/seminar_e
 import 'package:flutter_gen/gen_l10n/res.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'detail/detail_page.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class Application extends ConsumerWidget {
   const Application({Key? key}) : super(key: key);
@@ -30,7 +30,6 @@ class Application extends ConsumerWidget {
       theme: defaultTheme,
       localizationsDelegates: Resource.localizationsDelegates,
       supportedLocales: Resource.supportedLocales,
-      builder: EasyLoading.init(),
       localeResolutionCallback:
           (Locale? locale, Iterable<Locale> supportedLocales) {
         if (supportedLocales.any((element) =>
@@ -54,9 +53,10 @@ class Application extends ConsumerWidget {
         stepPageRoutes: (_) => const StepPage(),
         detailPageRoutes: (_) => const DetailPage(),
         loginPageRoutes: (_) => const LoginPage(),
-        registrationPageRoutes: (_) => const RegistrationPage(),
+        registrationPageRoutes: (_) => RegistrationPage(),
         confirmationPageRoutes: (_) => const Confirmation(),
         offersPageRoutes: (_) => const OffersPage(),
+        preContactDetailPageRoutes: (_) => const PreContactDetailPage(),
         profilePageRoutes: (_) => const ProfilePage(),
         zoomVideoSdkProviderPageRoutes: (context) =>
             const ZoomVideoSdkProvider(),

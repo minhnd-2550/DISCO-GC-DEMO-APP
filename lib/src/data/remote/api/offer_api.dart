@@ -9,6 +9,5 @@ abstract class OfferApi {
   factory OfferApi(Dio dioBuilder) = _OfferApi;
 
   @GET('/invitations')
-  Future<OfferResponse> getOffers(
-      @Path('type') String type, @Query('api_key') String key);
+  Future<OfferResponse> getOffers(@Query('api_key') String key);
 }

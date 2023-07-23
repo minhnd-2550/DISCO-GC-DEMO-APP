@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'offer_api.dart';
+part of 'registration_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'offer_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _OfferApi implements OfferApi {
-  _OfferApi(
+class _RegistrationApi implements RegistrationApi {
+  _RegistrationApi(
     this._dio, {
     this.baseUrl,
   });
@@ -19,25 +19,25 @@ class _OfferApi implements OfferApi {
   String? baseUrl;
 
   @override
-  Future<OfferResponse> getOffers(key) async {
+  Future<RegistrationResponse> register(key) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': key};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<OfferResponse>(Options(
-      method: 'GET',
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RegistrationResponse>(Options(
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/invitations',
+              '/register',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = OfferResponse.fromJson(_result.data!);
+    final value = RegistrationResponse.fromJson(_result.data!);
     return value;
   }
 

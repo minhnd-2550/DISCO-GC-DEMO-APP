@@ -13,22 +13,27 @@ class DetailOfferDataModel with DataModel implements Equatable {
   @JsonKey(name: 'user_name')
   final String? userName;
 
+  @JsonKey(name: 'offer_reason')
+  final String? offerReason;
+
   @JsonKey(name: 'interested_point')
   final String? interestedPoint;
+  final String? content;
 
   DetailOfferDataModel(
-      {this.subject, this.userPosition, this.userName, this.interestedPoint});
+      {this.subject,
+      this.userPosition,
+      this.userName,
+      this.interestedPoint,
+      this.content,
+      this.offerReason});
 
   factory DetailOfferDataModel.fromJson(Map<String, dynamic> json) =>
       _$DetailOfferDataModelFromJson(json);
 
   @override
-  List<Object?> get props => [
-        subject,
-        userPosition,
-        userName,
-        interestedPoint,
-      ];
+  List<Object?> get props =>
+      [subject, userPosition, userName, interestedPoint, offerReason, content];
 
   @override
   bool? get stringify => true;

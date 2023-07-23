@@ -4,6 +4,7 @@ import 'package:flutter_clean_architecture/src/presentation/ui/offers/component/
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_page.dart';
 
 const offersPageRoutes = '/offers';
+// const offersPageRoutes = '/';
 
 class OffersPage extends StatefulWidget {
   const OffersPage({Key? key}) : super(key: key);

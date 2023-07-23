@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'offer_api.dart';
+part of 'pre_contact_api.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'offer_api.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _OfferApi implements OfferApi {
-  _OfferApi(
+class _PreContactApi implements PreContactApi {
+  _PreContactApi(
     this._dio, {
     this.baseUrl,
   });
@@ -19,25 +19,25 @@ class _OfferApi implements OfferApi {
   String? baseUrl;
 
   @override
-  Future<OfferResponse> getOffers(key) async {
+  Future<PreContactResponse> getPreContact(key) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'api_key': key};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<OfferResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<PreContactResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/invitations',
+              '/pre_contact_users',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = OfferResponse.fromJson(_result.data!);
+    final value = PreContactResponse.fromJson(_result.data!);
     return value;
   }
 

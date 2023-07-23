@@ -7,5 +7,6 @@ class RegisterResponse with DataModel {
   final String? username;
 
   RegisterResponse({this.username});
-  factory RegisterResponse.fromJson(Map<String, dynamic> json) => _$RegisterResponseFromJson(json);
+  factory RegisterResponse.fromJson(Map<String, dynamic> json) =>
+      _$RegisterResponseFromJson(json);
 }

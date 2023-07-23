@@ -59,7 +59,8 @@ class AppError implements Equatable {
             case HttpStatus.gatewayTimeout: // 504
               type = AppErrorType.server;
               try {
-                final movieDbError = MovieDbErrorDataModel.fromJson(error.response?.data);
+                final movieDbError =
+                    MovieDbErrorDataModel.fromJson(error.response?.data);
                 errors = [movieDbError.toErrorDataModel()];
               } on Exception catch (e) {
                 errors = [ErrorDataModel(errorCode: -1, message: e.toString())];

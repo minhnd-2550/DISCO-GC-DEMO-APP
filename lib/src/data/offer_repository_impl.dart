@@ -17,8 +17,8 @@ class OfferRepositoryImpl implements OfferRepository {
             mapper ?? ExceptionMapper(languageCode: languageCode);
 
   @override
-  Future<List<OfferDataModel>> fetchOffers(String? type) async {
-    final response = await _offerApi.getOffers(type ?? '', _apiKey).catchError(
+  Future<List<OfferDataModel>> fetchOffers() async {
+    final response = await _offerApi.getOffers(_apiKey).catchError(
         (e) async => throw await _exceptionMapper.mapperTo(AppError.from(e)));
     return response.data ?? [];
   }

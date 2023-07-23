@@ -1,4 +1,6 @@
 import 'package:flutter_clean_architecture/src/domain/usecase/offer/fetch_offers_usecase.dart';
+import 'package:flutter_clean_architecture/src/domain/usecase/pre_contact/fetch_pre_contact_usecase.dart';
+import 'package:flutter_clean_architecture/src/domain/usecase/register/registration_usecase.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_clean_architecture/src/data/di/repository_provider.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/movie/fetch_movies_usecase.dart';
@@ -20,4 +22,14 @@ final getMovieImageUseCaseProvider = Provider<GetMovieImageUseCase>(
 
 final fetchOffersUseCaseProvider = Provider<FetchOfferUseCase>(
   (ref) => FetchOfferUseCase(repository: ref.watch(offerRepositoryProvider)),
+);
+
+final fetchPreContactUseCaseProvider = Provider<FetchPreContactUseCase>(
+  (ref) => FetchPreContactUseCase(
+      repository: ref.watch(preContactRepositoryProvider)),
+);
+
+final registrationUseCaseProvider = Provider<RegistrationUseCase>(
+  (ref) => RegistrationUseCase(
+      repository: ref.watch(registrationRepositoryProvider)),
 );
