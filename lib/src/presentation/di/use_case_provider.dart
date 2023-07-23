@@ -6,6 +6,7 @@ import 'package:flutter_clean_architecture/src/data/di/repository_provider.dart'
 import 'package:flutter_clean_architecture/src/domain/usecase/movie/fetch_movies_usecase.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/movie/get_movie_image_usecase.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/movie/get_movie_info_usecase.dart';
+import 'package:flutter_clean_architecture/src/domain/usecase/profile_current/fetch_profile_current_usecase.dart';
 
 final fetchMoviesUseCaseProvider = Provider<FetchMovieUseCase>(
   (ref) => FetchMovieUseCase(repository: ref.watch(movieRepositoryProvider)),

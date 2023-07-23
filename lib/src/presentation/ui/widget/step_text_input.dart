@@ -66,7 +66,8 @@ class StepTextFieldInput extends StatelessWidget {
               return Column(
                 children: [
                   StepDetailTextFieldInput(
-                    detailFieldModel: stepFieldModel.listField[index],
+                      detailFieldModel: stepFieldModel.listField[index],
+                      textEditingController: stepFieldModel.listField[index].data,
                   ),
                   const SizedBox(height: 16.0),
                 ],
@@ -81,22 +82,37 @@ class StepTextFieldInput extends StatelessWidget {
 
 class StepDetailTextFieldInput extends StatelessWidget {
   final DetailFieldModel detailFieldModel;
+  final TextEditingController? textEditingController;
 
   const StepDetailTextFieldInput({
     Key? key,
     required this.detailFieldModel,
+    required this.textEditingController,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-        border: const OutlineInputBorder(),
-        prefixIcon: detailFieldModel.prefixIcon,
-        suffixIcon: detailFieldModel.extraIcon,
-      ),
-    );
+    if(textEditingController != null) {
+      return TextFormField(
+        controller: textEditingController!,
+        decoration: InputDecoration(
+          contentPadding:
+          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+          border: const OutlineInputBorder(),
+          prefixIcon: detailFieldModel.prefixIcon,
+          suffixIcon: detailFieldModel.extraIcon,
+        ),
+      );
+    } else {
+      return TextFormField(
+        decoration: InputDecoration(
+          contentPadding:
+          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+          border: const OutlineInputBorder(),
+          prefixIcon: detailFieldModel.prefixIcon,
+          suffixIcon: detailFieldModel.extraIcon,
+        ),
+      );
+    }
   }
 }
