@@ -8,16 +8,22 @@ import 'package:flutter_clean_architecture/src/presentation/ui/widget/gender_sel
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/step_text_input.dart';
 import 'package:flutter_clean_architecture/src/presentation/model/step_field_model.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/footer.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/widget/loading.dart';
 import 'package:flutter_clean_architecture/gen/colors.gen.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/step/step_page_view_model.dart';
+import 'package:flutter_clean_architecture/src/data/model/profile_current_data_model.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 const stepPageRoutes = '/step';
 
-class StepPage extends StatelessWidget {
+final stepPageViewModelProvider = ChangeNotifierProvider((ref) => StepPageViewModel());
+
+class StepPage extends HookConsumerWidget {
   const StepPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final List<StepFieldModel> listInfoField = [
+  Widget build(BuildContext context, WidgetRef ref) {
+    List<StepFieldModel> listInfoField = [
       StepFieldModel(title: "氏名", typeField: TypeField.required, listField: [
         DetailFieldModel(
             typeInputField: TypeInputField.text,
@@ -151,7 +157,7 @@ class StepPage extends StatelessWidget {
       ]),
     ];
 
-    final List<StepFieldModel> listEducationField = [
+    List<StepFieldModel> listEducationField = [
       StepFieldModel(title: "学校所在地", typeField: TypeField.required, listField: [
         DetailFieldModel(
             typeInputField: TypeInputField.selection,
@@ -242,189 +248,224 @@ class StepPage extends StatelessWidget {
           ]),
     ];
 
-    return Scaffold(
-      backgroundColor: const Color(0xFFF5F5F5),
-      appBar: AppBar(
-        toolbarHeight: 55,
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xFF26BFA1),
-                Color(0xFF1AA1A3),
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
+    StepPageViewModel stepPageViewModel = ref.watch(stepPageViewModelProvider);
+
+    ProfileCurrentDataModel profileCurrentDataModel = stepPageViewModel.profileCurrentDataModel;
+    bool isLoading = stepPageViewModel.loading;
+    if(isLoading == true) {
+      return const Loading();
+    } else if(profileCurrentDataModel.id != null) {
+      listInfoField = processData(listInfoField, profileCurrentDataModel);
+
+      return Scaffold(
+        backgroundColor: const Color(0xFFF5F5F5),
+        appBar: AppBar(
+          toolbarHeight: 55,
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF26BFA1),
+                  Color(0xFF1AA1A3),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
             ),
           ),
+          systemOverlayStyle: const SystemUiOverlayStyle(
+            statusBarColor: Colors.white,
+            statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
+            statusBarBrightness: Brightness.light, // For iOS (dark icons)
+          ),
+          elevation: 0,
+          titleSpacing: 0,
+          title: Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Text(
+                  'GlobalCareer.com',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.white,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: Row(
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: const Icon(Icons.lock, color: Colors.white),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: const Icon(Icons.keyboard_arrow_down,
+                          color: Colors.white),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
         ),
-        systemOverlayStyle: const SystemUiOverlayStyle(
-          statusBarColor: Colors.white,
-          statusBarIconBrightness: Brightness.dark, // For Android (dark icons)
-          statusBarBrightness: Brightness.light, // For iOS (dark icons)
-        ),
-        elevation: 0,
-        titleSpacing: 0,
-        title: Row(
+        body: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Text(
-                'GlobalCareer.com',
-                style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.white,
-                  fontStyle: FontStyle.italic,
+            Padding(
+              padding: const EdgeInsets.only(top: 10),
+              child: Container(
+                height: 50,
+                width: MediaQuery.of(context).size.width,
+                margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    double containerWidth = constraints.maxWidth;
+                    double hexagonSize = containerWidth / 5;
+
+                    return Row(
+                      children: List.generate(
+                        5,
+                            (index) => HexagonShape(
+                          size: hexagonSize,
+                          color: index == 0
+                              ? ColorName.primaryStepColor
+                              : Colors.white,
+                          text: index.toString(),
+                          isFirstStep: index == 0 ? true : false,
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
             ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Row(
+            Expanded(
+              child: ListView(
+                scrollDirection: Axis.vertical,
                 children: [
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(Icons.lock, color: Colors.white),
+                  BaseContentForm(
+                    title: '基本情報',
+                    fromStepForm: true,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          const AvatarInput(),
+                          const SizedBox(height: 30),
+                          const GenderSelection(
+                              label: "敬称", listTitle: ['Mr.', 'Ms.', 'その他']),
+                          const SizedBox(height: 30),
+                          Column(
+                            children: List.generate(
+                              listInfoField.length,
+                                  (index) {
+                                return Column(
+                                  children: [
+                                    StepTextFieldInput(
+                                        stepFieldModel: listInfoField[index]),
+                                    const SizedBox(height: 30.0),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  InkWell(
-                    onTap: () {},
-                    child: const Icon(Icons.keyboard_arrow_down,
-                        color: Colors.white),
+                  const SizedBox(height: 20),
+                  BaseContentForm(
+                    title: '学歴',
+                    fromStepForm: true,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Column(
+                            children: List.generate(
+                              listEducationField.length,
+                                  (index) {
+                                return Column(
+                                  children: [
+                                    StepTextFieldInput(
+                                        stepFieldModel:
+                                        listEducationField[index]),
+                                    const SizedBox(height: 30.0),
+                                  ],
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 10.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _goToConfirm(context);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        textStyle: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        backgroundColor: ColorName.primaryStepColor,
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(15.0),
+                        child: Text('保存する'),
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            const Footer(),
           ],
         ),
-      ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 10),
-            child: Container(
-              height: 50,
-              width: MediaQuery.of(context).size.width,
-              margin: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: LayoutBuilder(
-                builder: (BuildContext context, BoxConstraints constraints) {
-                  double containerWidth = constraints.maxWidth;
-                  double hexagonSize = containerWidth / 5;
-
-                  return Row(
-                    children: List.generate(
-                      5,
-                      (index) => HexagonShape(
-                        size: hexagonSize,
-                        color: index == 0
-                            ? ColorName.primaryStepColor
-                            : Colors.white,
-                        text: index.toString(),
-                        isFirstStep: index == 0 ? true : false,
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-          Expanded(
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                BaseContentForm(
-                  title: '基本情報',
-                  fromStepForm: true,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      children: [
-                        const AvatarInput(),
-                        const SizedBox(height: 30),
-                        const GenderSelection(
-                            label: "敬称", listTitle: ['Mr.', 'Ms.', 'その他']),
-                        const SizedBox(height: 30),
-                        Column(
-                          children: List.generate(
-                            listInfoField.length,
-                            (index) {
-                              return Column(
-                                children: [
-                                  StepTextFieldInput(
-                                      stepFieldModel: listInfoField[index]),
-                                  const SizedBox(height: 30.0),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                BaseContentForm(
-                  title: '学歴',
-                  fromStepForm: true,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Column(
-                      children: [
-                        Column(
-                          children: List.generate(
-                            listEducationField.length,
-                            (index) {
-                              return Column(
-                                children: [
-                                  StepTextFieldInput(
-                                      stepFieldModel:
-                                          listEducationField[index]),
-                                  const SizedBox(height: 30.0),
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                      horizontal: 16.0, vertical: 10.0),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _goToConfirm(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      textStyle: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700,
-                        color: Colors.white,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      backgroundColor: ColorName.primaryStepColor,
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(15.0),
-                      child: Text('保存する'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const Footer(),
-        ],
-      ),
-    );
+      );
+    } else {
+      return SizedBox();
+    }
   }
 
   void _goToConfirm(BuildContext context) async {
     await Navigator.pushNamed(context, confirmationPageRoutes);
+  }
+
+  List<StepFieldModel> processData(List<StepFieldModel> list, ProfileCurrentDataModel profileCurrentDataModel) {
+    List<StepFieldModel> newList = list;
+    newList.forEach((element) {
+      if(element.title == "氏名") {
+        element.listField[0].data = TextEditingController();
+        element.listField[1].data = TextEditingController();
+        element.listField[0].data!.text = profileCurrentDataModel.firstNameJa ?? "";
+        element.listField[1].data!.text = profileCurrentDataModel.lastNameJa ?? "";
+      } else if(element.title == "氏名（カタカナ）") {
+        element.listField[0].data = TextEditingController();
+        element.listField[1].data = TextEditingController();
+        element.listField[0].data!.text = profileCurrentDataModel.firstNameRomaji ?? "";
+        element.listField[1].data!.text = profileCurrentDataModel.lastNameRomaji ?? "";
+      } else if(element.title == "ニックネーム必") {
+        element.listField[0].data = TextEditingController();
+        element.listField.first.data!.text = profileCurrentDataModel.nickName ?? "";
+      } else if(element.title == "メールアドレス") {
+        element.descriptionTitle = profileCurrentDataModel.email ?? "";
+      }
+    });
+    return newList;
   }
 }

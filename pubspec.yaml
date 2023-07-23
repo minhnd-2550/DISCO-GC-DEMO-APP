@@ -94,11 +94,13 @@ dev_dependencies:
   # Lint when build
   flutter_lints: ^2.0.1
 
-  intl: ^0.17.0
+  intl: ^0.18.0
 
   badges: ^3.1.1
 
   flutter_easyloading: ^3.0.5
+
+  provider: ^5.0.0
 
 # Config generate when build
 flutter_gen:

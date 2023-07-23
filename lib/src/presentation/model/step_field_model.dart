@@ -24,7 +24,8 @@ class StepFieldModel {
 class DetailFieldModel {
   final TypeInputField typeInputField;
   final Icon prefixIcon;
+  TextEditingController? data;
   Icon? extraIcon;
 
-  DetailFieldModel({required this.typeInputField, required this.prefixIcon, this.extraIcon});
+  DetailFieldModel({required this.typeInputField, required this.prefixIcon, this.data, this.extraIcon});
 }

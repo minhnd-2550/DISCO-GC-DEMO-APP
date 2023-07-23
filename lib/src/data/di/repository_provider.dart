@@ -1,8 +1,10 @@
 import 'package:flutter_clean_architecture/src/data/local/app_storage.dart';
 import 'package:flutter_clean_architecture/src/data/movie_repository_impl.dart';
 import 'package:flutter_clean_architecture/src/data/offer_repository_impl.dart';
+import 'package:flutter_clean_architecture/src/data/profile_current_repository_impl.dart';
 import 'package:flutter_clean_architecture/src/domain/repository/movie_repository.dart';
 import 'package:flutter_clean_architecture/src/domain/repository/offer_repository.dart';
+import 'package:flutter_clean_architecture/src/domain/repository/profile_current_repository.dart';
 import 'package:flutter_clean_architecture/src/presentation/di/app_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
