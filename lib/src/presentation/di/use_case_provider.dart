@@ -1,3 +1,4 @@
+import 'package:flutter_clean_architecture/src/domain/usecase/confirmation/submit_confirmation_usecase.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/offer/fetch_offers_usecase.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/pre_contact/fetch_pre_contact_usecase.dart';
 import 'package:flutter_clean_architecture/src/domain/usecase/register/registration_usecase.dart';
@@ -31,4 +32,9 @@ final fetchPreContactUseCaseProvider = Provider<FetchPreContactUseCase>(
 final registrationUseCaseProvider = Provider<RegistrationUseCase>(
   (ref) => RegistrationUseCase(
       repository: ref.watch(registrationRepositoryProvider)),
+);
+
+final confirmationUseCaseProvider = Provider<SubmitConfirmationUseCase>(
+  (ref) => SubmitConfirmationUseCase(
+      repository: ref.watch(confirmationRepositoryProvider)),
 );

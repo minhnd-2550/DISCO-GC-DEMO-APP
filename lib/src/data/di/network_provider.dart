@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_clean_architecture/src/data/remote/api/confirmation_api.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/offer_api.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/pre_contact_api.dart';
 import 'package:flutter_clean_architecture/src/data/remote/api/registration_api.dart';
@@ -34,4 +35,8 @@ final preContactApiProvider = Provider<PreContactApi>(
 
 final registrationApiProvider = Provider<RegistrationApi>(
   (ref) => RegistrationApi(ref.watch(dioBuilderProvider)),
+);
+
+final confirmationApiProvider = Provider<ConfirmationApi>(
+  (ref) => ConfirmationApi(ref.watch(dioBuilderProvider)),
 );

@@ -18,6 +18,7 @@ class _PreContactDetailPageState extends State<PreContactDetailPage>
   Widget build(BuildContext context) {
     TabController tabController = TabController(length: 5, vsync: this);
     return BasePage(
+      automaticallyImplyLeading: true,
       children: [
         Container(
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
