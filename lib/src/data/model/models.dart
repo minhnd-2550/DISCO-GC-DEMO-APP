@@ -13,3 +13,4 @@ export 'user_data_model.dart';
 export 'offer_data_model.dart';
 export 'pre_contact_data_model.dart';
 export 'registration_data_model.dart';
+export 'confirmation_data_model.dart';

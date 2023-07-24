@@ -1,6 +1,8 @@
+import 'package:flutter_clean_architecture/src/data/confirmation_repository_impl.dart';
 import 'package:flutter_clean_architecture/src/data/local/app_storage.dart';
 import 'package:flutter_clean_architecture/src/data/movie_repository_impl.dart';
 import 'package:flutter_clean_architecture/src/data/offer_repository_impl.dart';
+import 'package:flutter_clean_architecture/src/domain/repository/confirmation_repository.dart';
 import 'package:flutter_clean_architecture/src/domain/repository/movie_repository.dart';
 import 'package:flutter_clean_architecture/src/domain/repository/offer_repository.dart';
 import 'package:flutter_clean_architecture/src/data/pre_contact_repository_impl.dart';
@@ -34,4 +36,9 @@ final preContactRepositoryProvider = Provider<PreContactRepository>(
 final registrationRepositoryProvider = Provider<RegistrationRepository>(
   (ref) => RegistrationRepositoryImpl(
       ref.watch(registrationApiProvider), ref.watch(localeCodeProvider)),
+);
+
+final confirmationRepositoryProvider = Provider<ConfirmationRepository>(
+  (ref) => ConfirmationRepositoryImpl(
+      ref.watch(confirmationApiProvider), ref.watch(localeCodeProvider)),
 );

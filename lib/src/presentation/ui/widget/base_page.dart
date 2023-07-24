@@ -16,7 +16,12 @@ class ListMenu {
 
 class BasePage extends StatelessWidget {
   final List<Widget> children;
-  const BasePage({Key? key, required this.children}) : super(key: key);
+  final bool? automaticallyImplyLeading;
+  const BasePage(
+      {Key? key,
+      required this.children,
+      this.automaticallyImplyLeading = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +40,7 @@ class BasePage extends StatelessWidget {
         backgroundColor: const Color.fromRGBO(249, 249, 249, 1),
         appBar: AppBar(
           toolbarHeight: 90,
+          automaticallyImplyLeading: automaticallyImplyLeading!,
           backgroundColor: Colors.transparent,
           flexibleSpace: Container(
             decoration: const BoxDecoration(

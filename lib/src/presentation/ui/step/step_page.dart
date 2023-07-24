@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation.dart';
+import 'package:flutter_clean_architecture/src/presentation/ui/confirmation/confirmation_page.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/base_content_form.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/avatar_input.dart';
 import 'package:flutter_clean_architecture/src/presentation/ui/widget/hexagon_shape.dart';
@@ -263,6 +263,7 @@ class StepPage extends HookConsumerWidget {
         backgroundColor: const Color(0xFFF5F5F5),
         appBar: AppBar(
           toolbarHeight: 55,
+          automaticallyImplyLeading: false,
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
